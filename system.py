@@ -11,8 +11,7 @@ import pymysql
 
 app = Flask(__name__)
 
-app.secret_key = 'themostsecretivekeyeverinthemultiversecreatedbyjemuki'
-#app.secret_key = "caircocoders-ednalan"
+app.secret_key = 'SUPERSAFESECRETKEYHAHABYJEMUKI'
 
 
 UPLOAD_FOLDER = 'static/uploads'
