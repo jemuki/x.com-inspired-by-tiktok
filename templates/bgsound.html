@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background sounds</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+<script src="../static/js/bootstrap.js"></script>
+
+<style>
+body {
+    background-image: url("../static/images/x1.jfif");
+}
+.back { 
+    width: 50px;
+    height: 50px;
+    margin-left: 0%;
+}
+.div1 {
+    width: 20%;
+    height: 50px;
+    float: left;
+    background-color: rgb(28,12,116);
+}
+.div2 {
+    width: 80%;
+    height: 50px;
+    float: right;
+    background-color: rgb(28,12,116);
+    text-align: center;
+    color: white;
+}
+.add {
+    width: 50px;
+    height: 50px;
+    margin-left: 47%;
+}
+.input {
+  width: 50%;
+  height: 30px;
+  
+  }
+.search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.schicon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.sch {
+    border-radius: 10px;
+    border: 2px solid rgb(235,12,179);
+    text-align: center;
+    height: 40px;
+}
+.download {
+    width: 50px;
+    height: 50px;
+    margin-left: 5%;
+    border-radius: 50%;
+    
+}
+.audio {
+    width: 90%;
+    margin-left: 5%;
+    background-color: white;
+    height: 55px;
+    border-radius: 30px;
+    display: flex;
+}
+.raudio {
+  width: 60%;
+  margin-left: 5%;
+  height: 50px;
+  border-radius: 30px;
+  
+
+}
+
+.x3 {
+  width: 50px;
+  height: 50px;
+}
+.form1{
+    display: flex;
+}
+
+</style>
+
+</head>
+<body>
+
+
+
+<!-- Note -->
+<!-- While logging in your audio you tell us its title which people can use to search. -->
+<!-- This is because due to the limitwd space we can get a place to place your audio name -->
+
+   
+     <div  class="xs fixed-top" >
+    <div class="div1" >
+       <a href="/home"><img class="back" src="../static/images/back9x1.jpg" alt=""></a>
+   </div> 
+
+   <div class="div2" >
+  <h3  style="margin-right: 22%; " class="pt-2" >Background sounds</h3>
+   </div>
+</div>
+<br><br>
+<p  class="text-white" >This is a section where we can share creative back ground sounds (audio) which creators can use in their contents.</p>
+
+
+
+
+<div class="search" >
+    <form action="/searchsound" method="POST" class="form1">   
+         <input type="text" name="search" placeholder="Type ur search " class="sch" >
+         <input type="submit" value="search" class="btn btn-outline-info">
+    </form>
+
+  <!-- <a href=""><img class="schicon" src="../static/images/search6x1.jpg" alt=""></a> -->
+</div>
+
+<h4 class="text-danger" > {{ message }} </h4>
+
+
+
+<!-- search results -->
+{% for row in data2 %}
+<div class="audio" >
+  
+  <a href=""><img class="download" src="../static/images/downloadx3.jpg" alt=""></a>
+
+  <audio  class="raudio" controls >
+   <source src="../static/uploads/{{ row[3] }}" type="audio/mp3">
+   </audio>
+   <br><br>
+  
+</div>
+<h5  class="text-white ms-4" > {{ row[2] }} </h5>
+
+{%  endfor %}
+<br>
+
+
+
+
+
+
+
+{% for row in data %}
+<div class="audio" >
+  
+  <a href=""><img class="download" src="../static/images/downloadx3.jpg" alt=""></a>
+
+  <audio  class="raudio" controls >
+   <source src="../static/uploads/{{ row[3] }}" type="audio/mp3">
+   </audio>
+   <br><br>
+  
+</div>
+<h5  class="text-white ms-4" > {{ row[2] }} </h5>
+
+{%  endfor %}
+<br>
+   <footer class="foooter fixed-bottom" >
+       
+             <img class="add"     data-bs-target="#soundmodal" data-bs-toggle="modal" src="../static/images/addx.png" alt=""    >
+       
+   </footer>
+
+
+<!-- modal -->
+<div id="soundmodal" class="modal">
+  <div class="modal-dialog" >
+     <div class="modal-content" >
+         <div class="modal-header" >
+          <a href="/bgsounds"><img class="x3" src="../static/images/x3.jfif" alt=""></a>
+            
+         </div>
+         <div class="modal-body" >
+          {% with messages = get_flashed_messages() %}
+          {% if messages %}
+          {% for message in messages %}
+          <div class="alert alert-info">
+          <strong>{{ message }}</strong>
+          </div>
+          {% endfor %}
+          {% endif %}
+          {% endwith %}
+          </p>
+          
+      
+      
+      <form method="post" action="/addbgsound" enctype="multipart/form-data" class="form-inline">
+          <div class="form-group">
+          <label  ><p class="text-muted" >choose a sound :</p> </label>
+          <input type="file" name="files[]" id="fileInput" class="form-control" multiple ><br>
+          <textarea name="caption" id="" cols="50" rows="2" placeholder="enter an hashtag" required class="form-control"  ></textarea>
+        
+          </div>
+          <br>
+          <input type="submit" name="submit" class="btn btn-success" value="UPLOAD"/>
+      </form>
+      
+  
+  
+  
+  
+  
+  
+        </div>
+         <div class="modal-footer" >
+             
+         </div>
+     </div>
+   <!-- above div closes the content -->
+    </div>
+
+  
+  
+</div>
+
+<!-- End for modal -->
+
+
+</head>
+<body>
+    
+</body>
+</html>

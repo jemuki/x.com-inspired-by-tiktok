@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comments</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <script src="../static/js/bootstrap.js"></script>
+
+<style>
+    .footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+ .add {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+
+ }
+ .x3 {
+    width: 50px;
+    height: 50px;
+ }  
+
+</style>
+
+</head>
+<body>
+    <a href="/funny" class="btn btn-outline-info ms-2 mt-2 " >back</a>
+    <br>
+    <h4 class="text-danger" > {{ message }} </h4>
+
+
+how are you?
+    <div class="footer fixed-bottom " >
+    
+                <form action="/funnycomments/<funny_id>" method="POST">
+                    <textarea name="comment" id="" cols="40" rows="2" class="form-control" ></textarea><br>
+                    <input type="submit" name="" id="" value="comment" class="btn btn-outline-info">
+                    </form>
+        
+               
+       </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    <!-- modal -->
+
+    <div id="commentmodal" class="modal">
+        <div class="modal-dialog" >
+           <div class="modal-content" >
+               <div class="modal-body" >
+                {%  for row in data %}
+                <form action="/funnycomments/{{ row[0] }}" method="POST">
+                    <textarea name="comment" id="" cols="40" rows="2" class="form-control" ></textarea><br>
+                    <input type="submit" name="" id="" value="comment" class="btn btn-outline-info">
+                    </form>
+                    {%  endfor %}
+               </div>
+               <div class="modal-footer" >
+                <p class="text-muted" >Unajua nitafanya aje nikienda Ethiopia halafu waninyoe vibaya,,,,Utafanya?</p>
+                <p class="text-muted" >I-dis-a-barber</p>
+                
+          
+               </div>
+           </div>
+         <!-- above div closes the content -->
+          </div>
+      
+        
+        
+    </div>
+    
+    <!-- End for modal -->
+    
+    
+
+</body>
+</html>

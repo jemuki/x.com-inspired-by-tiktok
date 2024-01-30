@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {{ data[2] }} </title>
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <script src="../static/js/bootstrap.js"></script>
+
+    <style>
+.card-header {
+    display: flex;
+
+}
+.dp {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.card {
+    max-width: 60%;
+    margin: auto;
+}
+    </style>
+</head>
+<body>
+    <a href="/ideas" class="btn btn-outline-dark mt-2 ms-2" >ideas</a>
+    <br><br>
+    <div class="card-shadow" >
+        <div class="card" >
+            <div class="card-header" >
+                <img class="dp" src="../static/uploads/{{ data[5] }}" alt=""  >
+                <p class="text-muted pt-2 ms-2" >{{ data[2] }}</p>
+               </div>
+               <div class="card-body" >
+                <p class="text-muted" > {{ data[3] }} </p>
+            </div>
+            <div class="card-footer" >
+                <h4 class="text-muted" >by {{ data[4] }} </h4>
+            </div>
+        
+        </div>
+    </div>
+    <br><br>
+</body>
+</html>

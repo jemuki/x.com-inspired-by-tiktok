@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search results</title>
+
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <script src="../static/js/bootstrap.js"></script>
+
+    <style>
+        body {
+            background-image: url("../static/images/x1.jfif");
+        }
+    .back {
+        width: 50px;
+        height: 50px;
+        margin-left: 0%;
+    }
+    .posts {
+        width: 50%;
+        float: left;
+        height: 40px;
+        background-color: rgb(28,12,116);
+        text-align: center;
+    }
+    .account {
+        width: 50%;
+        float: right;
+        height: 40px;
+        background-color: rgb(28,12,116);
+        text-align: center;
+    }
+    .input {
+  width: 50%;
+  height: 30px;
+  
+  }
+.search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+}
+.schicon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.sch {
+    border-radius: 10px;
+    border: 2px solid rgb(235,12,179);
+    text-align: center;
+    height: 40px;
+}
+
+.results {
+  width: 80%;
+  height: 50px;
+  margin: auto;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+
+}
+.dp {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.x {
+  margin-left: 60%;
+}
+    .videos {
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    form {
+      display: flex;
+    }
+    
+    </style>
+
+</head>
+<body>
+    
+<div class="head fixed-top" >
+  <a href="/home"><img class="back" src="../static/images/back9x1.jpg" alt=""></a>
+</div>
+<br><br>
+<p class="text-white" >Search an account or an #hashtag here.</p>
+
+<div class="search" >
+  <form action="/search" method="POST" autocomplete="on">
+    <input type="text" name="search" placeholder="Type ur search " class="sch" >
+    <input type="submit" name="" id="" value="search" class="btn btn-outline-info " >
+  </form>
+  <!-- <a href="searchscreen.html"><img class="schicon" src="images/search6x1.jpg" alt=""></a> -->
+</div>
+
+
+<h4 class="text-danger ms-1" > {{ message }}  </h4>
+
+
+{% for row in data1 %}
+<a style="text-decoration: none;" href="/resultscontent/{{ row[1] }}">
+<div class="results" >
+<img class="dp ms-1" src="../static/uploads/{{ row[4] }}" alt="">
+<h3 class="text-muted pt-2 ms-2" > {{ row[0] }} </h3>
+<!-- <p class="x text-muted pt-2" > {{ row[6] }} </p> -->
+</div>
+</a>
+<br>
+{% endfor %}
+
+
+
+<!-- clips results -->
+{% for row in data2 %}
+<div class="videos" >
+  <div class="card-shadow" >
+  <div class="card" >
+      <div class="card-body2" >
+          <video controls width="330px" height="250px" >
+              <source src="../static/uploads/{{ row[2] }}" type="video/mp4">
+              </video>
+
+              
+      </div>
+      <p class="text-muted " > {{ row[3] }} </p>
+     
+  </div>
+
+</div>
+</div>
+
+<br>
+
+{% endfor %}
+
+
+<!-- memes search results -->
+{% for row in data3 %}
+<div class="videos" >
+  <div class="card-shadow" >
+  <div class="card" >
+      <div class="card-body2" >
+          <img src="../static/uploads/{{ row[4] }}" alt="" width="330px" height="250px" >
+              
+      </div>
+      <p class="text-muted " > {{ row[5] }} </p>
+     
+  </div>
+
+</div>
+</div>
+
+<br>
+
+{% endfor %}
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

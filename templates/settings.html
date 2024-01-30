@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+
+  <link rel="stylesheet" href="../static/css/bootstrap.css">
+  <script src="../static/js/bootstrap.js"></script>
+
+  <style>
+      body {
+          background-image: url("../static/images/x1.jfif");
+      }
+  .back {
+      width: 50px;
+      height: 50px;
+      margin-left: 0%;
+  }
+  .header {
+      width: 100%;
+      height: 50px;
+      background-color: rgb(28,12,116);
+  }
+  .passicon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+  } 
+  .password {
+      display: flex;
+  }
+  .desc {
+      width: 50%;
+      height: 40px;
+      color: white;
+      border-radius: 10px;
+      text-align: center;
+      background-color: rgb(28,12,116);
+  }
+  h3 {
+      color: white;
+  }
+  .btn1 {
+      margin-left: 20%;
+      
+  }
+  .send {
+      width: 50px;
+      height: 50px;
+      margin-left: 3%;
+
+  }
+  .text {
+      display: flex;
+  }
+  textarea {
+      border-radius: 20px;
+      text-align: center;
+  }
+  </style>
+
+</head>
+<body>
+    
+<div class="header"  >
+     <a href="/j"><img class="back" src="../static/images/back9x1.jpg" alt=""></a>
+</div>
+<br>
+
+<!-- <dl> -->
+
+<!-- <dt>   -->
+      <!-- <div class="password"  > -->
+  <!-- <img class="passicon" src="../static/images/tec30.jfif" alt=""> -->
+  <!-- <div class="desc" ><h3>Password </h3></div> -->
+<!-- </div> -->
+<!-- </dt> -->
+<!-- <dd> -->
+    
+      <!-- <div class="btn1" > -->
+        <!-- <h3  data-bs-target="#mymodal" data-bs-toggle="modal">Create password</h3> -->
+        <!-- <b class="text-danger" > {{message}} </b> -->
+       
+      <!-- </div> -->
+  
+ <div id="mymodal" class="modal">
+        <div class="modal-dialog" >
+           <div class="modal-content" >
+               <div class="modal-header" >
+                   <h4>Create your password here</h4>
+               </div>
+               <div class="modal-body" >
+                 <form action="/changepassword" method="POST">
+                     <input type="password" placeholder="old password" name="oldpasword" class="form-control"><br><br>
+                     <input type="password" placeholder="new password" name="newpassword" class="form-control" ><br><br>
+                     <input type="submit" value="update" class="btn btn-outline-info" >
+
+                 </form>
+               </div>
+               <div class="modal-footer" >
+                  Akhi don't share your password with anyone
+               </div>
+           </div>
+         <!-- above div closes the content -->
+          </div>
+      
+        
+        
+    </div>
+  
+</dd>
+
+</dl>
+
+
+<dl>
+
+    <dt>  
+
+
+          <hr>
+      
+  
+
+
+      
+
+          <!-- <div class="password"  > -->
+      <!-- <img class="passicon" src="../static/images/tec30.jfif" alt=""> -->
+      <!-- <div class="desc" ><h3>Block </h3></div> -->
+    <!-- </div> -->
+    <!-- </dt> -->
+    <!-- <dd> -->
+        <!-- <div class="btn1" > -->
+            <!-- <h3  data-bs-target="#mymodal2" data-bs-toggle="modal">Blocked accounts</h3> -->
+            
+           <!-- To block you search the name in mormal search or any where you meet the account and long press the user name ,the option will appear -->
+        
+           <div id="mymodal2" class="modal">
+            <div class="modal-dialog" >
+               <div class="modal-content" >
+                   <div class="modal-header" >
+                       <h4>Blocked accounts</h4>
+                   </div>
+                   <div class="modal-body" >
+                     Natasha
+                        
+    
+                     
+                   </div>
+                   <div class="modal-footer" >
+                      
+                   </div>
+               </div>
+             <!-- above div closes the content -->
+              </div>
+     
+        
+        </div>
+      
+    </dd>
+    
+    </dl>
+    <hr>
+    
+
+
+
+
+    <dl>
+
+        <dt>  
+
+          
+            <div class="password"  >
+          <img class="passicon" src="../static/images/tec30.jfif" alt="">
+          <div class="desc" ><h3>Feedback</h3></div>
+        </div>
+        </dt>
+        <dd>
+            <div class="btn1" >
+                <h3  data-bs-target="#mymodalfeed" data-bs-toggle="modal">Give us your feedback </h3>
+                
+               <!-- To block you search the name in mormal search or any where you meet the account and long press the user name ,the option will appear -->
+            
+               <div id="mymodalfeed" class="modal">
+                <div class="modal-dialog" >
+                   <div class="modal-content" >
+                       <div class="modal-header" >
+                           <h4>Give us your feedback here</h4>
+                       </div>
+                       <div class="modal-body" >
+                         
+                         <div class="text" >
+                            <form action="/feedback" method="POST">
+                                <textarea name="feedback" id="" cols="100" rows="2" class="form-control" ></textarea><br>
+                                <input type="submit" name="" id="" value="send" class="btn btn-outline-info" >
+                            </form>
+                                 </div>   
+        
+                         
+                       </div>
+                       <div class="modal-footer" >
+                          <p>Thank you for your feedback</p>
+                       </div>
+                   </div>
+                 <!-- above div closes the content -->
+                  </div>
+         
+            
+            </div>
+          
+        </dd>
+        
+        </dl>
+        <hr>
+        
+</body>
+</html>

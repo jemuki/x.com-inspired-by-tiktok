@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add challenge</title>
+
+<link rel="stylesheet" href="../static/css/bootstrap.css">
+<script src="../static/js/bootstrap.js"></script>
+<style>
+form {
+        margin: auto;
+        width: 70%;
+    }
+    .card {
+        width: 250px;
+        margin-left: 5%;
+    }
+    
+</style>
+</head>
+<body>
+    <a href="/profile"  class="btn btn-outline-dark mt-2 ms-2 fixed-top " >back</a>
+    
+    <br><br>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-info">
+    <strong>{{ message }}</strong>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    </p>
+    
+
+
+<form method="post" action="/addchallenge" enctype="multipart/form-data" class="form-inline">
+    <div class="form-group">
+    <label  ><p class="text-muted" >choose a clip :</p> </label>
+    <input type="file" name="files[]" id="fileInput" class="form-control" multiple ><br>
+    <input type="text" name="caption" placeholder="enter an hashtag" required class="form-control text-align=center " >
+    </div>
+    <br>
+    <input type="submit" name="submit" class="btn btn-success" value="UPLOAD"/>
+</form>
+
+<br><br>
+<h3 class="text-muted ms-4" >Wow, like my uploads. </h3>
+{% for row in data %}
+<div class="videos" >
+    <div class="card-shadow" >
+    <div class="card" >
+        <div class="card-body" >
+            <video controls width="200px" height="200px" >
+                <source src="../static/uploads/{{ row[2] }}" type="video/mp4">
+                </video>
+                
+                
+        </div>
+        <div class="card-footer" >
+            <p class="text-muted" > {{ row[3] }} </p>
+        </div>
+
+    </div>
+
+</div>
+</div>
+
+<br><br>
+{%  endfor %}
+
+
+
+</body>
+</html>

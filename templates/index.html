@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jemuki.com</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <script src="../static/js/bootstrap.js"></script>
+
+    <style>
+        body {
+            background-image: url("../static/images/x1.jfif");
+
+        }
+        .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .meme {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+       </style>
+
+</head>
+<body>
+    <i><h3 class=" header text-info" >Welcome to jemuki.com</h3></i>
+    <br>
+   
+    <div class="meme" >
+    <video autoplay width="500px" height="500px" >
+            <source src="../static/uploads/{{ data[0] }}" type="video/mp4">
+    </video>
+   </div>
+
+<br>
+<div class="buttons" >
+<a href="/signup" class="btn btn-outline-info" >Create account</a>
+___
+<a href="/login" class="btn btn-outline-info" >Login</a>
+</div>
+
+</body>
+</html>

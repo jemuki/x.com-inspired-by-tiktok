@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ideas</title>
+<link rel="stylesheet" href="../static/css/bootstrap.css">
+<script src="../static/js/bootstrap.js"></script>
+
+<style>
+body {
+    background-image: url("../static/images/x1.jfif");
+}
+
+.back { 
+    width: 50px;
+    height: 50px;
+    margin-left: 0%;
+}
+.div1 {
+    width: 20%;
+    height: 50px;
+    float: left;
+    background-color: rgb(28,12,116);
+}
+.div2 {
+    width: 80%;
+    height: 50px;
+    float: right;
+    background-color: rgb(28,12,116);
+    text-align: center;
+    color: white;
+}
+.add { 
+    width: 50px;
+    height: 50px;
+    margin-left: 47%;
+}
+textarea {
+    text-align: center;
+    
+}
+
+.modal-header {
+    display: flex;
+}
+.x3 {
+    width: 40px;
+    height: 40px;
+
+}
+.chatex {
+    width: 90%;
+    display: flex;
+    height: 60px;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: white;
+    border-radius: 10px;
+    
+  }
+  
+  .time {
+    
+    padding-top: 3%;
+  }
+  .dp {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  p {
+    color: white;
+  }
+  .input {
+  width: 50%;
+  height: 30px;
+  
+  }
+.search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.schicon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.sch {
+    border-radius: 10px;
+    border: 2px solid rgb(235,12,179);
+    text-align: center;
+    height: 40px;
+}
+.form1 {
+    display: flex;
+}
+
+</style>
+
+</head>
+<body>
+
+<!-- Arranged from most recent to oldest -->
+<!-- Below your text we have a your dp, -->
+<!-- You can tap dp to go to his/her ac -->
+<!-- You tap the title to go to modal to reda  the whole stuff -->
+    <div class="xs fixed-top" >
+   <div class="div1  " >
+       <a href="/home"><img class="back" src="../static/images/back9x1.jpg" alt=""></a>
+   </div> 
+
+   <div class="div2  " >
+  <h3  style="margin-right: 22%;" class="pt-2" >Ideas</h3>
+   </div>
+</div>
+<br><br>
+   <p  class="text-white" >This is a section where if you have an idea and you may not be able to implement it you can post it and a content creator capable of implementing it can implement it.Maxreads(100) </p>
+
+   <div class="search" >
+<form action="/searchidea" method="POST" class="form1" >
+    <input type="text" name="search" placeholder="Type ur search " class="sch" >
+    <input type="submit" name="" value="search" id="" class="btn btn-outline-info">
+  
+</form>
+    <!-- <input type="text" placeholder="Type ur search " class="sch" > -->
+  <!-- <a href=""><img class="schicon" src="../static/images/search6x1.jpg" alt=""></a> -->
+</div>
+
+ <h4 class="text-danger" > {{ message }} </h4>
+
+{% for row in data2 %}
+<a style="text-decoration: none;" href="/readidea/{{ row[0] }}">>
+    <div class="chatex" >
+    <img class="dp mt-1" src="../static/uploads/{{ row[5] }}" alt="">
+    <p class="pt-3 text-muted ms-2" > {{ row[2] }} </p>
+    </div>
+    </a
+    <hr>
+    
+    
+    
+
+{% endfor %}
+   
+
+
+{% for row in data %}
+<!-- chat 1 -->
+
+<a style="text-decoration: none;" href="/readidea/{{ row[0] }}">>
+    <div class="chatex" >
+    <img class="dp mt-1" src="../static/uploads/{{ row[5] }}" alt="">
+    <p class="pt-3 text-muted ms-2" > {{ row[2] }} </p>
+    </div>
+    </a
+    <hr>
+    
+    
+    
+    
+
+
+
+
+
+
+
+   <footer class="footer  fixed-bottom" >
+    
+             <img class="add"   data-bs-target="#ideamodal" data-bs-toggle="modal"   src="../static/images/addx.png" alt="">
+       
+   </footer>
+
+
+<!-- Example modal -->
+<div id="exmodal" class="modal">
+    <div class="modal-dialog" >
+       <div class="modal-content" >
+           <div class="modal-header" >
+               <a href="/ideas">
+                   <img class="x3" src="../static/images/x3.jfif" alt=""></a>
+               <h4> {{ row[2] }} </h4>
+           </div>
+           <div class="modal-body" >
+             <p class="text-muted" > {{ row[3] }} </p>
+           </div>
+           <div class="modal-footer" >
+            <p class="text-muted" >Unajua nitafanya aje nikienda Ethiopia halafu waninyoe vibaya,,,,Utafanya?</p>
+            <p class="text-muted" >I-dis-a-barber</p>
+            
+      
+           </div>
+       </div>
+     <!-- above div closes the content -->
+      </div>
+  
+    
+    
+</div>
+
+<!-- End for modal -->
+
+{%  endfor %}
+
+
+
+
+<!-- add idea modal -->
+   <div id="ideamodal" class="modal">
+    <div class="modal-dialog" >
+       <div class="modal-content" >
+           <div class="modal-header" >
+            <a href="/ideas"><img class="x3" src="../static/images/x3.jfif" alt=""></a>
+              
+           </div>
+           <div class="modal-body" >
+                <form action="/addidea" method="POST" >
+              
+                <label for=""><p class="text-muted" >caption</p></label><br>
+               <textarea name="caption" id="" cols="30" rows="1" class="form-control" required ></textarea><br>
+               
+               <label for=""><p class="text-muted" >idea</p></label><br>
+                 <textarea name="idea" id="" cols="30" rows="10" class="form-control" required ></textarea> <br><br>
+                 
+                 <input type="submit" name="" id=""  class="btn btn-outline-info value="share" value="share idea" >
+               
+                </form>
+                 </div>
+           <div class="modal-footer" >
+               
+           </div>
+       </div>
+     <!-- above div closes the content -->
+      </div>
+  
+    
+    
+</div>
+
+<!-- End for modal -->
+
+
+
+</body>
+</html>

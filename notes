@@ -1,0 +1,416 @@
+Database details for the hosted database in coding.co.ke server for the website
+User: codingc1_jereson
+Database: codingc1_jemuki.com
+password: Mbzhx6cu[~cf
+link:coding.co.ke/jereson/
+
+
+python anywhere account details:
+password : .P!#!Z6wATxDTuv
+email: mjereson@gmail.com
+username: jereson
+
+
+
+python anywhere details for flicker class
+database password: secretkey
+Database host address:jereson.mysql.pythonanywhere-services.com
+Username:jereson
+
+
+
+python anywhere details for jemuki.com
+database name = jemuki_com254_254
+password = jemuki.comsecretpassword#4321
+
+if you need datasets to do datascience projects go to Kaggle.com website
+
+
+when writing an insert query you have to put the values into single or double quotes '' but for the column names not an must.
+
+
+postmanpassword:jeresonsecretkey
+email:mjereson@gmail.com
+username:jereson
+
+burbsuite details:
+username = jeresonemail = mjereson@gmail.com
+password:!9e6{;4$?gKcqFBRbW5S9C74W'-i'Qw&
+
+Google play account:
+username: jereson muchui
+email: mjereson@gmail.com
+contect: +254768992045
+
+
+jeresonmuchuisecretkey
+jemuki.comsecretpassword#4321
+
+#How to get max_connections in  a database
+SHOW VARIABLES LIKE 'max_connections';
+
+#How to change it temporarily
+SET GLOBAL max_connections = 512;
+
+#Hw to change max_connections permanently
+max_connections = 512
+
+# service mysqld restart
+
+
+
+
+insert into uploads(upload_id, email, videoUrl, videoDesc, videoDesc2, category1, category2, videoFlash,  videoTitle) values('56', 'mjereson@yahoo.com', 'https://modcom.co.ke/vids/Richard%20Turere_%20My%20invention%20that%20made%20peace%20with%20lions.mp4', 'This is the first  clip', 'This is still the first   clip', 'funny', 'legends', '0', 'Richard');
+
+
+
+insert into replies(email, username, post_id, reply) values('mjereson@gmail.com', 'jereson', '3', 'like your first post');
+
+
+
+insert into memes(upload_id, email, imagelink, imgTitle, imgDesc, imgDesc2, category, imgFlash) values('60', 'mjereson@yahoomail.com', 'https://v16-webapp.tiktok.com/fe87b512e9185a9211993a7e2b2dffa0/62e28de1/video/tos/useast2a/tos-useast2a-pve-0068/4c105250df7245ac972270c3650dafda/?a=1988&ch=0&cr=0&dr=0&lr=tiktok_m&cd=0%7C0%7C1%7C0&cv=1&br=818&bt=409&btag=80000&cs=0&ds=3&ft=eXd.6Hj9Myq8ZC275we2NPhCol7Gb&mime_type=video_mp4&qs=0&rc=aTZnNjlkOmVoNjhlNzZoN0Bpajk7a2c6ZnQ0ZDMzNzczM0BjY15eLjUuXjUxNjZjYzExYSM1YWJjcjQwX2hgLS1kMTZzcw%3D%3D&l=202207280723350102231210930D8B5670', 'haha', 'This is the xz meme', 'This is still the xz meme ', 'gods', '0');
+
+CREATE TABLE jcream (
+    customer_id int NOT NULL AUTO_INCREMENT,
+    phone varchar(255) NOT NULL,
+    amount varchar(255),
+    code varchar(1000),
+    shopname varchar(1000),
+    
+  PRIMARY KEY (email)
+);
+# This above query is ok for creating a table with a primary key
+# The query
+
+CREATE TABLE jcream (
+    id int NOT NULL AUTO_INCREMENT,
+    phone varchar(255) NOT NULL,
+    amount varchar(255),
+    code int,
+    PRIMARY KEY (id)
+);
+
+insert into jcream(phone,amount,code) values('254724066655', '40', '9HN3');
+
+insert into jcream(phone,amount,code) values(254714369097, 5, 0);
+
+
+#Change the data type of a colum already in a table
+ALTER TABLE debtors ALTER COLUMN description varchar(2000);
+
+
+ALTER TABLE debtors
+ADD PRIMARY KEY (email);
+#making column primary key
+
+#Drop column
+ALTER TABLE debtors
+ADD COLUMN email varchar(500) ;
+
+
+
+
+
+
+
+# CREATE TABLE posts( post_id int NOT NULL AUTO_INCREMENT,email varchar(255) NOT NULL,username varchar(255),post varchar(1000),flashes int(10),replies int(20) PRIMARY  KEY (post_id));
+   
+
+# if you want the autoincrement to start with another number other than 1
+MySQL uses the AUTO_INCREMENT keyword to perform an auto-increment feature.
+
+By default, the starting value for AUTO_INCREMENT is 1, and it will increment by 1 for each new record.
+
+To let the AUTO_INCREMENT sequence start with another value, use the following SQL statement:
+
+ALTER TABLE Persons AUTO_INCREMENT=100;
+
+
+
+
+
+
+#APP ideas
+Book a specific restaurant table + food reviewing
+bike rie sharing app
+scan a product and get the shop that sells it
+large malls navigation app
+parking space finder
+supermarket check outs
+
+
+
+
+
+CREATE TABLE signuppost (
+    username varchar(255) NOT NULL,
+    email varchar(255),
+    password varchar(1000),
+    
+  PRIMARY KEY (email)
+);
+
+CREATE TABLE jcream (
+    id int NOT NULL AUTO_INCREMENT,
+    phone varchar(255) NOT NULL,
+    amount varchar(255),
+    code int,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE creators (
+    id int NOT NULL AUTO_INCREMENT,
+    image varchar(255) NOT NULL,
+    subs varchar(255),
+    views int,
+    likes int,
+    PRIMARY KEY (id)
+);
+
+
+
+
+
+CREATE TABLE meals (
+    data_id int NOT NULL AUTO_INCREMENT,
+    date varchar(255) NOT NULL,
+    units varchar(255),
+    popular varchar(1000),
+    unpopular varchar(1000),
+    revenue varchar(1000),
+    profits varchar(1000),
+    debts varchar(1000),
+    comments varchar(1000),
+    
+  PRIMARY KEY (data_id)
+);
+
+
+kotlin
+https://justpaste.it/8br9h
+Create an XML with  image view and button
+
+ 
+
+In Activity.
+
+//Find the Button and  set click listener
+
+BtnllPsvLicense.setOnClickListener{
+ alert()
+}
+
+
+//alert function
+private fun alert(){
+ if(!checkForInternet(applicationContext)){
+ startActivity(Intent(applicationContext, ActivityNoConnection::class.java))
+ finish()
+ }
+ val alertDialog: AlertDialog? = this@Documents.let {
+ val builder = AlertDialog.Builder(it)
+ builder.setTitle(R.string.select) .setItems(arrayOf("GALLEY","CAMERA"),
+ DialogInterface.OnClickListener { _, which ->
+ if(which.toString()=="0"){
+ openGalleryForImage()
+ }else{
+ capturePhoto()
+ } })
+ builder.create()
+ }
+ if (alertDialog != null) {
+ alertDialog.show()
+ }
+}
+//add these ones
+private fun openGalleryForImage() {
+ if (ContextCompat.checkSelfPermission(this.applicationContext,
+ Manifest.permission.READ_EXTERNAL_STORAGE)
+ == PackageManager.PERMISSION_GRANTED) {
+
+ val intent = Intent(Intent.ACTION_PICK)
+ intent.type = "image/*"
+ startActivityForResult(intent, requestCodeGallery)
+
+ } else {
+ ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+ requestCodePermission)
+ }
+}
+private fun capturePhoto() {
+ if (ContextCompat.checkSelfPermission(this.applicationContext,
+ Manifest.permission.CAMERA)
+ == PackageManager.PERMISSION_GRANTED) {
+
+ val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+ startActivityForResult(cameraIntent, requestCodeCamera)
+
+ } else {
+ ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA),
+ requestCodeCameraPermission)
+ }
+
+}
+
+
+//then add this 
+override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+ super.onActivityResult(requestCode, resultCode, data)    
+if (resultCode == Activity.RESULT_OK && requestCode == requestCodeGallery && data != null){
+ //set the image to imageview make sure you find the image view
+ imagePsvLicense.setImageURI(data.data)
+         //test code at this point 
+ val bm = (imagePsvLicense.drawable as BitmapDrawable).bitmap
+ val fileUploadName = "PsvLicense-"+getValue(this,"deviceId")+".png"
+ uploadImage(bm,"imageName", applicationContext)
+}
+}
+//add below to manifest
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.CAMERA" />
+//optional ones
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+
+
+
+//Then add this function
+fun uploadImage(bitmap: Bitmap, fileName: String, context: Context){
+ Log.d("file3", bitmap.toString())
+ DoAsync {
+ val formData = listOf(
+ "function" to "uploadImage",
+ "fileName" to fileName,
+ "base64string" to imageToBase64(bitmap)
+ )
+ executeRequestPic(context, formData as List<Pair<String, String>>, object : CallBack {
+ override fun onSuccess(result: String?) {
+
+ }
+ })
+
+ }.execute()
+}//
+
+
+
+ 
+interface CallBack {
+ fun onSuccess(result: String?)
+}
+
+fun executeRequestPic(context: Context, formData: List<Pair<String, String>>, callback: CallBack) {
+println("##Request ${formData.toString()}")
+Fuel.post("Your API",formData).authentication().bearer(token).responseString {
+ _, _, result ->
+ println("##Response$result")
+result.fold({ d ->
+ //do something with data
+ println("Done")
+callback.onSuccess(result.get())
+}, { err ->
+ //do something with error
+ println("Not Ok"+err.message)
+// MapsActivity.mainActivity.runOnUiThread(Runnable {
+// Toast.makeText(context, "Error Uploading!, Upload the current Photo Again,", Toast.LENGTH_LONG).show()
+//
+// })
+ })
+//callback.onSuccess(result.get())
+ }
+}
+
+
+//add these in build.gradle - Module 
+implementation("com.github.kittinunf.fuel:fuel:2.3.1")
+
+
+
+
+
+//Reference imports
+import android.Manifest
+import android.app.Activity
+import android.app.AlertDialog
+import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
+import android.net.ConnectivityManager
+import android.net.Network
+import android.net.NetworkCapabilities
+import android.os.AsyncTask
+import android.os.Build
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.provider.MediaStore
+import android.util.Base64
+import android.util.Log
+import android.view.WindowManager
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import java.io.ByteArrayOutputStream
+
+
+import android.app.AlertDialog
+import android.content.Context
+import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.AsyncTask
+import android.os.Build
+import android.util.Base64
+import android.util.Log
+import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
+import com.aw.driverleadcab.MapsActivity
+import com.aw.driverleadcab.account.ActivityNoConnection
+import com.aw.driverleadcab.account.OTPVerification2
+import com.github.kittinunf.fuel.Fuel
+import com.github.kittinunf.fuel.core.extensions.authentication
+import java.io.ByteArrayOutputStream
+import java.io.IOException
+import java.net.HttpURLConnection
+import java.net.MalformedURLException
+import java.net.URL
+
+
+
+
+
+ 
+python code
+@app.route('/getNoteText',methods=['GET','POST'])
+def GetNoteText():
+    if request.method == 'POST':
+        file = request.files['pic']
+        filename = file.filename
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        processImage(filename)            
+    else:
+        return "Y U NO USE POST?"
+
+
+CREATE TABLE paykasamo (
+    id int NOT NULL AUTO_INCREMENT,
+    amount varchar(255) NOT NULL,
+    date varchar(255),
+    
+  PRIMARY KEY (id)
+);
+
+
+
+
+
+
+##
+Youtube codes
+<iframe width="864" height="486" src="https://www.youtube.com/embed/_hUct1jsS8s" title="pov: can i love you a little while longer | a playlist" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

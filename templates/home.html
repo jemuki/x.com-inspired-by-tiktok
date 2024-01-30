@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+
+<link rel="stylesheet" href="../static/css/bootstrap.css">
+<script src="../static/js/bootstrap.js"></script>
+
+<style>
+    body {
+        background-image: url("../static/images/x1.jfif");
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;    
+    }
+.J {
+    width: 10%;
+    height: 10%;
+    border-radius: 50%;
+    margin-left: 88%;
+    margin-top: 1%;
+}
+.label {
+    
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.img {
+    width: 15%;
+    height: 15%;
+    border-radius: 50%;
+}
+.challenge {
+    display: flex;
+    margin-left: 20%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}  
+.desc {
+    height: 40px;
+    width: 50%;
+    background-color: rgb(28,12,116);
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    border-radius: 10px;
+    margin-left: 2%;
+    padding: 1%;
+
+}
+.funny {
+    height: 40px;
+    width: 50%;
+    background-color: rgb(28,12,116);
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     text-indent: 2%;
+    border-radius: 10px;
+    margin-left: 2%;
+    text-align: center;
+}
+.imgher {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.input {
+  width: 50%;
+  height: 30px;
+  
+  }
+.search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.schicon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.sch {
+    border-radius: 10px;
+    border: 2px solid rgb(235,12,179);
+    text-align: center;
+    height: 40px;
+}
+
+.div1 {
+    width: 90%;
+    float: left;
+}
+.div2 {
+    width: 10%;
+    float: right;
+}
+.ex {
+    width: 50px;
+    height: 50px;
+}
+.x1 {
+    width: 100%;
+    height: 40px;
+    background-color: rgb(19, 95, 235);
+    float: left;
+    color: white;
+    text-indent: 5%;
+}
+
+.challenge :hover {
+    transform: scale(1.1);
+    color: rgb(235,12,179);
+    font-family: chiller;
+}
+.challenge {
+    transition: transform 0.2s ease;
+    min-height: 80px;
+}
+.dailyclip {
+    margin-left: 5%;
+}
+.daily {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dailymeme {
+    border-radius: 10px;
+}
+form {
+    display: flex;
+}
+</style>
+
+</head>
+<body >
+
+{%  for row in data2 %}
+ 
+     
+    <a  href="/j"> <img class="J  " src="../static/uploads/{{ row[6] }}" alt=""></a>
+ 
+   
+
+   <div  class="x1">
+    <div class="spark" >
+        <h3 data-bs-target="#mymodalspark" data-bs-toggle="modal"   >Spark</h3>
+    
+    
+        <div id="mymodalspark" class="modal"> 
+         <div class="modal-dialog" >
+            <div class="modal-content" >
+                <div class="modal-header" >
+                    <div class="div1" >
+                           <h4>Spark</h4>
+                    </div>
+                    <div class="div2" >
+                       <a href="/home"><img class="ex" src="../static/images/x3.jfif" alt=""></a>
+                    </div>
+                </div>
+                <div class="modal-body" >
+                  <ul>
+                      <a  style="text-decoration: none;" href="/ideas"><li>Ideas</li></a>
+                      <!-- <a style="text-decoration: none;" href="/sparkclips"><li>Clips</li></a> -->
+                      <a style="text-decoration: none;" href="/memeimages"><li>meme images</li></a>
+                      <a style="text-decoration: none;" href="/bgsounds"><li>background sounds</li></a>
+                      
+                  </ul>
+                </div>
+                <div class="modal-footer" >
+                    <p></p>
+                </div>
+            </div>
+          <!-- above div closes the content -->
+           </div>
+       
+     
+   </div>
+<br>
+   
+     
+
+    <div class="label" >
+       <img src="../static/images/jemuki3.jpg" alt="">
+    </div>
+
+   <br>
+   
+   <br>
+
+<!-- <a style="text-decoration:none" href="/challenge"> -->
+<!-- <div class="challenge" > -->
+    
+   <!-- <img src="../static/images/cha3.jfif" alt="" class="imgher" >  -->
+    <!-- <div class="desc" > -->
+        <!-- <h3 >#Challenge</h3> -->
+    <!-- </div> -->
+<!-- </div> -->
+<!-- </a> -->
+<!-- <br> -->
+
+<a style="text-decoration:none" href="/funny">
+
+<div class="challenge" >
+    <img src="../static/uploads/{{ row[0] }}" alt="" class="imgher" >
+     <div class="funny" >
+         <h3>#funniest?</h3>
+     </div>
+ </div>
+</a>
+ <br>
+ 
+ <a style="text-decoration:none" href="/respect">
+
+ <div class="challenge" >
+    <img src="../static/uploads/{{ row[1] }}" alt="" class="imgher" >
+     <div class="desc" >
+         <h3>#Respect</h3>
+     </div>
+ </div>
+</a>
+ <br>
+ 
+ <a style="text-decoration:none" href="/memes">
+
+ <div class="challenge" >
+    <img src="../static/uploads/{{ row[2] }}" alt="" class="imgher" >
+     <div class="desc" >
+         <h3>#memes</h3>
+     </div>
+ </div>
+</a>
+ <br>
+ 
+ <a style="text-decoration:none" href="/her">
+
+ <div class="challenge" >
+    <img src="../static/uploads/{{ row[3] }}" alt="" class="imgher" >
+     <div class="desc" >
+         <h3>#Made her day</h3>
+     </div>
+ </div>
+</a>
+ <br>
+ 
+ <a style="text-decoration:none" href="/music">
+
+    <div class="challenge" >
+       <img src="../static/uploads/{{ row[4] }}" alt="" class="imgher" >
+        <div class="desc" >
+            <h3>#Music & dance</h3>
+        </div>
+    </div>
+   </a>
+    <br>
+
+
+    <a style="text-decoration:none" href="/cars">
+
+        <div class="challenge" >
+            <!-- <video autoplay loop muted class="imgher" > -->
+                <!-- <source src="../static/uploads/{{ row[5] }}" type="video/mp4"> -->
+            <!-- </video> -->
+            <img src="../static/uploads/{{ row[5] }}" alt="" class="imgher" >
+            <div class="desc" >
+                <h3>#car lovers</h3>
+            </div>
+        </div>
+       </a>
+        <br>
+       
+        
+     
+   
+    {% endfor %}
+    
+    <!-- <a style="text-decoration:none" href="/replies"> -->
+
+        <!-- <div class="challenge" > -->
+           <!-- <img src="../static/images/tweet1.jpg" alt="" class="imgher" > -->
+            <!-- <div class="desc" > -->
+                <!-- <h3># replies</h3> -->
+            <!-- </div> -->
+        <!-- </div> -->
+       <!-- </a> -->
+        <!-- <br> -->
+     
+
+
+
+
+
+<div class="search" >
+    <form action="/search" method="POST" autocomplete="on">
+           <input type="text" name="search" placeholder="Type ur search " class="sch" >
+           <input type="submit" name="" id="" value="search" class="btn btn-outline-info "  >
+    </form>
+  
+  <!-- <a href="searchscreen.html"><img class="schicon" src="../static/images/search6x1.jpg" alt=""></a> -->
+</div>
+
+<br><br>
+
+<div class="daily" >
+<button type="button" class="btn btn-outline-info "   data-bs-target="#mymodalmeme" data-bs-toggle="modal">
+    daily meme
+   </button>
+
+   <button type="button" class="btn btn-outline-info "   data-bs-target="#mymodalclip" data-bs-toggle="modal">
+    daily clip
+   </button>
+
+   <button type="button" class="btn btn-outline-info "   data-bs-target="#mymodalviewers" data-bs-toggle="modal">
+    Viewers
+   </button>
+</div>
+   <br><br>
+ <!-- end of modal button -->
+
+ {% if session['key'] %}
+ <a href="/signout" class="btn btn-outline-info ms-5 mb-3" >Signout</a>
+{% endif %}
+
+
+
+
+<br><br>
+ <!-- Do your modal -->
+   <!-- Each modal should have its own id -->
+ 
+ 
+   <div id="mymodalmeme" class="modal">
+    <div class="modal-dialog" >
+       <div class="modal-content" >
+           <div class="modal-header" >
+               <div class="div1" >
+                      <h4>Your daily meme dose</h4>
+               </div>
+               <div class="div2" >
+                  <a href="/home"><img class="ex" src="../static/images/x3.jfif" alt=""></a>
+               </div>
+           </div>
+           <div class="modal-body" >
+             <img class="dailymeme" src="../static/uploads/{{ data[0] }}" alt="" width="90%">
+                         <br><br>
+            
+           
+           </div>
+           <div class="modal-footer" >
+                   </div>
+       </div>
+     <!-- above div closes the content -->
+      </div>
+  
+    </div> 
+<!--  daily clip  modal-->
+
+
+    
+   <div id="mymodalclip" class="modal">
+    <div class="modal-dialog" >
+       <div class="modal-content" >
+           <div class="modal-header" >
+               <div class="div1" >
+                      <h4>Your daily meme dose</h4>
+               </div>
+               <div class="div2" >
+                  <a href="/home"><img class="ex" src="../static/images/x3.jfif" alt=""></a>
+               </div>
+           </div>
+           <div class="modal-body" >
+         <video controls  width="95%" height="500px">
+             <source  src="../static/uploads/{{ data[2] }}" type="video/mp4">
+         </video>     
+        </div>
+           <div class="modal-footer" >
+                  <h4>lets share</h4>
+           </div>
+       </div>
+     <!-- above div closes the content -->
+      </div>
+  
+    </div>
+
+      
+    <!-- Top viewers modal -->
+    <div id="mymodalviewers" class="modal">
+        <div class="modal-dialog" >
+           <div class="modal-content" >
+               <div class="modal-header" >
+                   <div class="div1" >
+                          <h4>Today top viewers</h4>
+                   </div>
+                   <div class="div2" >
+                      <a href="/home"><img class="ex" src="../static/images/x3.jfif" alt=""></a>
+                   </div>
+               </div>
+               <div class="modal-body" >
+               
+              <table>
+                  <tr>
+                      <th>pst</th>
+                      <th>account</th>
+                      <th>clips</th>
+                  </tr>
+              </table>
+                
+
+            </div>
+              
+            <div class="modal-footer" >
+                      <h4>lets share</h4>
+               </div>
+           </div>
+         <!-- above div closes the content -->
+          </div>
+      
+        </div>
+    
+        
+       
+</body>
+</html>

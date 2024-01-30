@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Replies</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <script src="../static/js/bootstrap.js"></script>
+
+    <style>
+        body {
+            background-image: url("../static/images/x1.jfif");
+        }
+
+        .add {
+            width: 80px;
+            height: 50px;
+            margin-left: 44%;
+        }
+
+        .back {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+
+        }
+
+        .arrow {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+
+        }
+
+        .div1 {
+            width: 88%;
+
+            float: left;
+            height: 50px;
+        }
+
+        .div2 {
+            width: 12%;
+
+            float: right;
+            height: 50px;
+            text-align: center;
+        }
+
+        .div3 {
+            width: 80%;
+            float: left;
+            background-color: white;
+            height: 50px;
+
+        }
+
+        .div4 {
+            width: 20%;
+            height: 50px;
+            float: right;
+            background-color: white;
+
+        }
+
+        .header {
+            padding-top: 5px;
+        }
+
+        .card-header {
+            display: flex;
+            background-color: white;
+        }
+
+        .dp {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+
+        }
+
+        .thread {
+            margin-left: 5%;
+            max-width: 70%;
+            min-height: 230px;
+        }
+
+        .foot {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+
+        .card-footer {
+            display: flex;
+        }
+
+        .time {
+
+            margin-left: 15%;
+        }
+
+        .add {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-left: 47%;
+        }
+
+        .ex {
+            width: 40px;
+            height: 40px;
+        }
+
+        .postimg {
+            width: 270px;
+            height: 270px;
+            border-radius: 10px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="header  fixed-top">
+        <div class="div1">
+            <a href="/home"><img class="back" src="../static/images/test4.jpg" alt=""></a>
+        </div>
+        <div class="div2">
+            <a href="/replylegends"><img class="arrow" src="../static/images/test3.jpg" alt=""></a>
+
+        </div>
+    </div>
+
+
+    <div class="header2">
+
+        <div class="div3">
+
+            <a style="text-decoration: none;" href="">
+                <h3 style="margin-left: 55%;padding-top: 5px;">Talented</h3>
+            </a>
+        </div>
+        <div class="div4">
+
+
+        </div>
+    </div>
+
+    <br><br><br>
+    {% for row in data %}
+    <div class="thread">
+        <div class="card-shadow">
+            <div class="card">
+                <div class="card-header">
+                   
+                        <img class="dp" src="../static/uploads/{{ row[5] }} " alt="">
+                   
+                    <h4 class="pt-2 ms-2"> {{ row[4] }} </h4>
+                </div>
+                <div class="card-body">
+                    {% if  row[3] != "" %}
+                    <img class="postimg" src="../static/uploads/{{  row[3] }}" alt="">
+                    {% endif %}
+                    <p class="text-muted"> {{ row[2] }} </p>
+                </div>
+                <div class="card-footer">
+                    <a href=""><img class="foot ms-1" src="../static/images/pulse3x.png" alt=""></a>
+                    <p class="text-muted ms-1 pt-1"> {{ row[7] }} </p>
+                    <a href="/repliesx/{{  row[0] }}"><img class="foot ms-3" src="../static/images/comments.jfif"
+                            alt=""></a>
+                    <p class="text-muted ms-1 pt-1"> {{ row[8] }} </p>
+
+                    <img class="foot ms-4 " src="../static/images/sh8.jfif" alt="">
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+    <br><br>
+
+    {% endfor %}
+    <div class="footer fixed-bottom">
+        <img class="add" src="../static/images/addx.png" alt="" data-bs-target="#mymodalpost" data-bs-toggle="modal">
+    </div>
+
+    <div id="mymodalpost" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="div1">
+                        <h4>Add a post </h4>
+                    </div>
+                    <div class="div2">
+                        <a href="/replies"><img class="ex" src="../static/images/x3.jfif" alt=""></a>
+                    </div>
+                </div>
+                <div class="modal-body">
+
+                    <form action="/addpost" method="POST" enctype="multipart/form-data" >
+                        <input type="text" name="post" id="" placeholder="enter post" class="form-control"><br>
+                        <input type="file" name="files[]" id="fileInput" class="form-control"  ><br>
+    
+                        <input type="submit" name="" id="" value="send" class="btn btn-outline-info">
+                    </form>
+
+                    <div class="modal-footer">
+                        <p class="text-muted">Motivational speaker:</p><br>
+                        <p class="text-muted">I started my water company with only my saliva.</p>
+                    </div>
+                </div>
+                <!-- above div closes the content -->
+            </div>
+
+        </div>
+        <!--  daily clip  modal-->
+
+
+
+</body>
+
+</html>

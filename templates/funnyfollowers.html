@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>followers</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <script src="../static/js/bootstrap.js"></script>
+
+    <style>
+body {
+    background-image: url("../static/images/x1.jfif");
+
+}
+.followers {
+    display: flex;
+    background-color: white;
+    border-radius: 10px;
+    width: 90%;
+    margin: auto;
+    height: 50px;
+}
+.dp {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+
+}
+ 
+ </style>
+</head>
+<body>
+<h3 class="text-white ms-4" >followers</h3>
+<br>
+{% for row in data %}
+
+<div class="followers" >
+    <img class="dp mt-1 ms-2 " src="../static/uploads/{{ row[3] }}" alt="">
+    <h4 class="text-muted pt-2 ms-2" > {{ row[2] }} </h4>
+</div>
+<br>
+{% endfor %}
+</body>
+</html>

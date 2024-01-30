@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insane</title>
+
+    
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+  <script src="../static/js/bootstrap.js"></script>
+
+    <style>
+     body {
+         background-image: url("../static/images/x1.jfif");
+     }
+     
+    .arrow {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 2%;
+    }
+    .back {
+        width: 40px;
+        height: 40px;
+        margin-left: 10%;
+        border-radius: 50%;
+    }
+    .div1 {
+        width: 70%;
+        float: left;
+        
+        height: 50px;
+    }
+    .div2 {
+        width: 30%;
+        float: right;
+        
+        height: 50px;
+        text-align: end;
+    }
+    .head {
+        display: flex;
+    }
+    .button1 {
+        margin-left: 41%;
+    }
+    .xz {
+        padding-top: 5px;
+    }
+    video {
+    width: 100%;
+    margin-left: 0%;
+    margin-right: 0%;
+
+
+}
+
+.allfooter {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.flash {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+ }
+.comments {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    
+}
+.acc {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    
+}
+
+
+    </style>
+
+
+</head>
+<body>
+
+    <div  class="xz fixed-top" >
+<div class="div1" >
+ <div class="head" >
+    <a href="/musiclegends"><img class="back" src="../static/images/test4.jpg" alt=""></a>
+ <a class="button1" style="text-decoration: none;" href=""><h4  class="pt-1 text-white" >Insane</h4></a>
+ </div>
+</div>
+<div class="div2" >
+<a href="/musicgods"><img class="arrow" src="../static/images/test3.jpg" alt=""></a>
+</div>
+ 
+</div>
+
+   <br><br>
+
+  
+
+
+<div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
+    <div class="carousel-indicators mb-4">
+        <button type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide-to="4" aria-label="Slide 5"></button>
+        <button type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide-to="5" aria-label="Slide 6"></button>
+        <button type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide-to="6" aria-label="Slide 7"></button>
+        <button type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide-to="7" aria-label="Slide 8"></button>
+        <button type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide-to="8" aria-label="Slide 9"></button>
+        <button type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide-to="9" aria-label="Slide 10"></button>
+        <button type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide-to="10" aria-label="Slide 11"></button>
+      
+      
+      
+      
+      </div>
+      
+
+   
+   
+    <div class="carousel-inner">
+        
+      <div class="carousel-item active">
+        <video controls height="580px"  >
+       
+            <source src="../static/uploads/{{ x[0] }} " class="d-block w-100" type="video/mp4">
+          
+          </video>
+        
+          
+    <div class="xdata mb-5 fixed-bottom " >
+         <p class="text-white ms-2 " > {{ x[1] }} </p>
+         <p class="text-white ms-2" >reload your browser after 10 slides for more</p>
+            
+    </div>      
+
+    
+    
+      </div>
+      {% for row in data %}
+      <div class="carousel-item">
+       
+        <video controls height="580px"   >
+       
+            <source src="../static/uploads/{{ row[2] }} " class="d-block w-100" type="video/mp4">
+          
+          </video>
+        <div class="footer mb-5 fixed-bottom " >
+                <p class="text-white  pt-1 ms-2 " > {{ row[3] }} </p>
+                <div class="allfooter" >
+               
+                    <a href="/flashmusic/{{ row[0] }}"> <img class="flash" src="../static/images/flashx1.jpg" alt="">  </a>
+
+                    <a style="text-decoration: none;" href="/flash/{{ row[0] }}"> <p class="text-white  ms-1 pt-3" > {{ row[5] }}  </p></a>
+            
+
+            <!-- <a href="/funnycomments/{{ row[0] }}"> <img class="comments ms-2" src="../static/images/comments.jfif" alt=""> </a> -->
+
+                <!-- <p class="text-white  ms-1 pt-3" > 576k  </p> -->
+
+
+                <a href="/accmusic/{{ row[1] }}"> <img class="acc ms-4" src="../static/images/dp2x.jpg" alt=""> </a>
+            
+                    
+            </div>
+            <p class="text-white ms-2" >reload your browser after 10 slides for more</p>
+            
+        </div>
+
+        
+      </div>
+      {% endfor %}
+     </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+   
+
+
+
+
+ 
+   
+
+
+
+
+
+    
+
+
+
+
+
+</body>
+</html>

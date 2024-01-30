@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comments</title>
+<link rel="stylesheet" href="../static/css/bootstrap.css">
+<script src="../static/js/bootstrap.js"></script>
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+    body {
+        background-image: url("../static/images/x1.jfif");
+    }
+.back {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 1%;
+}
+.header {
+    padding-top: 5px;
+}
+.card-header {
+    display: flex;
+    background-color: white;
+}
+.dp {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+
+}
+.thread {
+    
+    min-width: 100%;
+    min-height: 230px;
+    }
+.foot {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+
+}
+.card-footer {
+    display: flex;
+}
+.time {
+    
+    margin-left:40%;
+}
+.time2 {
+    margin-left: 35%;
+}
+.repcomments {
+max-width: 60%;
+margin-left: 5%;
+background-color: white;
+border-radius: 10px;
+min-width: 60%;
+}
+.ex {
+    width: 40px;
+    height: 40px;
+}
+.repheader {
+    display: flex;
+}
+.repfooter {
+    display: flex;
+}
+</style>
+</head>
+<body>
+    
+<div class="thread  fixed-top " >
+    <div class="card-shadow" >
+        <div class="header   " >
+            <a href="/replies"><img class="back" src="../static/images/test4.jpg" alt=""></a>
+        
+        </div>
+       
+        <div  class="card" >
+            
+            <div class="card-header" >
+                <img class="dp" src="../static/uploads/{{ data[5] }}   " alt="">
+                <h4 class="pt-2 ms-2" >  {{ data[4] }} </h4>
+
+            </div>
+            <div class="card-body" >
+                <img src="../static/images/{{ data[3] }}" alt="" width="200px" height="200px" >
+           <p class="text-muted" >  {{ data[2] }} </p>
+            </div>
+            <div class="card-footer" >
+                <a href=""><img class="foot ms-1" src="../static/images/pulse3x.png" alt=""></a><p class="text-muted ms-1 pt-1" > {{ data[7] }} </p>
+                <img class="foot ms-3" src="../static/images/comments.jfif" alt=""  data-bs-target="#mymodalcomment" data-bs-toggle="modal"><p class="text-muted ms-1 pt-1" > {{ data[8] }} </p>
+
+            <a href=""><img class="foot ms-3" src="../static/images/sh8.jfif" alt=""></a>
+             <p class="time text-muted " >  {{ data[6] }} </p>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+    
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br>
+
+      
+
+{%   for row in data %}
+<div class="repcomments" >
+
+<div  class="repheader" >
+<img class="dp mt-2 ms-2" src="../static/uploads/{{  row[5] }} " alt="">
+<h4 class="ms-3 pt-4" > {{  row[4] }}  </h4>
+</div>
+
+<p  class="text-muted ms-2 " > {{  row[2] }} </p>
+
+<div class="repfooter ms-2 " >
+    <a href=""><img class="foot" src="../static/images/flashx1.jpg" alt=""> </a> <p class="ms-2 pt-1" >  {{  row[7] }}  </p>
+    <img class="foot ms-3 " src="../static/images/sh8.jfif" alt="">
+    <p class="time2 text-muted " > {{  row[6] }}  </p>
+   
+</div>
+</div>
+<hr>
+{%  endfor %}
+
+
+    <div id="mymodalcomment" class="modal">
+        <div class="modal-dialog" >
+           <div class="modal-content" >
+               <div class="modal-header" >
+                   <div class="div1" >
+                          <h4>Reply to @{{ data[3] }} post </h4>
+                   </div>
+                   <div class="div2" >
+                      <a href="/repliesx/{{  data[0] }}"><img class="ex" src="../static/images/x3.jfif" alt=""></a>
+                   </div>
+               </div>
+               <div class="modal-body" >
+                 <form action="/addrepliesx/{{  data[0] }}" method="POST">
+                    <input type="text" name="reply" id="" class="form-control" required ><br>
+                    <input type="submit" name="" id="" value="reply" class="btn btn-outline-info" >
+                 </form>
+                <div class="modal-footer" >
+                   <p class="text-muted" >Motivational speaker:</p><br>
+                   <p class="text-muted" >I started my water company with only my saliva.</p>  
+            </div>
+           </div>
+         <!-- above div closes the content -->
+          </div>
+      
+        </div> 
+    <!--  daily clip  modal-->
+    
+    
+       
+</body>
+</html>

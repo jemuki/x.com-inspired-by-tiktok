@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ data[0] }}</title>
+
+<link rel="stylesheet" href="../static/css/bootstrap.css">
+<script src="../static/js/bootstrap.js"></script>
+
+
+<style>
+    body {
+        background-image: url("../static/images/x1.jfif");
+    }
+    .back {
+        width: 50px;
+        height: 50px;
+        margin-left: 1%;
+    }
+    .header {
+        width: 100%;
+        height: 50px;
+        background-color: rgb(28,12,116);
+        display: flex;
+    }
+    .options {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        
+    }
+    
+    .dp {
+        width: 300px;
+        height: 400px;
+        border-radius: 30px;
+        margin: auto;
+    }
+    .container {
+        width: 330px;
+        text-align: center;
+    }
+    .editdp {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    
+    .videos {
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .div1 {
+        width: 80%;
+        float: left;
+        background-color: rgb(28,12,116);
+        height: 50px;
+    }
+    .div2 {
+        width: 20%;
+        height: 50px;
+        float: right;
+        background-color: rgb(28,12,116);
+    }
+    .xadd {
+        width: 100px;
+        height: 50px;
+        text-align: center;
+        border: 1px solid rgb(73, 97, 233);
+    }
+    .xdp {
+        width: 100px;
+        height: 50px;
+        text-align: center;
+        border: 1px solid rgb(73, 97, 233);
+        margin-left: 2% ;
+    }
+    .xname {
+        width: 100px;
+        height: 50px;
+        text-align: center;
+        border: 1px solid rgb(73, 97, 233);
+        margin-left: 2% ;
+    }
+    input {
+        text-align: center;
+    }
+    textarea {
+        text-align: center;
+    }
+    
+</style>
+
+</head>
+<body>
+    <div class="header  fixed-top " >
+      <div class="div1"  >
+    <a href="/j"><img class="back" src="../static/images/back9x1.jpg" alt=""></a>
+      </div>
+      <div class="div2" >
+      <!-- <img  data-bs-target="#mymodal" data-bs-toggle="modal"  class="options" src="../static/images/optionx4.png" alt=""> -->
+      </div>
+    </div>
+<br><br>
+
+<!--modal for more options  -->
+<div id="mymodal" class="modal">
+    <div class="modal-dialog" >
+       <div class="modal-content" >
+           <div class="modal-header" >
+               <h4>More options</h4>
+           </div>
+           <div class="modal-body" >
+                 <a style="text-decoration: none;" href="/chats" class="btn btn-outline-info" >Chats</a> <br><br>
+                 <a style="text-decoration: none;" href="/notifications" class="btn btn-outline-info" >Notifications</a>
+           </div>
+           <div class="modal-footer" >
+               <p class="text-muted" >M-pesa messages siku hizi zimekuwa personal sasa,naitisha balance inakuja ati OGA2LEOBRO.</p>
+           </div>
+       </div>
+     <!-- above div closes the content -->
+      </div>
+  
+    
+    
+</div>
+
+
+
+          
+<!-- End for modal -->
+<br>
+<div class="container" >
+    <div class="card-shadow" >
+      <div class="card" >
+          <img class="dp" src="../static/uploads/{{ data[4] }}" alt="">
+          <div class="card-body" >
+           
+           <h4 class="text-muted  " > {{ data[0] }}</h4>
+            
+        <!-- <a href="/signout">Signout</a> -->
+              
+              
+              <div class="followbtn" >
+                 <a href="/myfollowers" class="btn btn-outline-info" > {{ data[6] }}<br> Followers</a>
+                 <a href="" class="btn btn-outline-info" > {{ data[7] }} <br> Following</a>
+                 <!-- <p class="text-info" > {{ data[8] }} flashes & pulse</p> -->
+                 
+              </div>
+            
+            <P class="text-muted" > {{ data[3] }} </P>
+             
+              
+              
+
+              
+           
+          </div>
+      </div>
+    </div>
+</div>
+<br>
+
+
+<div class="editdp" >
+    
+    
+        <div class="xadd" >
+         <h3 class="text-primary pt-2" data-bs-target="#addcontentmodal" data-bs-toggle="modal"  > Add</h3>
+        </div>
+       
+        <a style="text-decoration: none;" href="/editdp">
+            <div class="xdp" >
+             <h3 class="text-primary pt-2" >Edit dp</h3>
+            </div>
+            </a>
+                
+            <div class="xname" >
+        <h3 class="text-primary pt-2" data-bs-target="#namemodal" data-bs-toggle="modal"  > _name</h3>
+        </div>
+
+</div>
+
+
+<br>
+
+<b class="text-danger" > {{message}} </b>
+<!-- If you want to see more about the video i.e number of flashes you tap the video to play and the normal footer will appear even the ac ,,,,you tap the account to go back -->
+
+
+
+
+<br>
+
+
+
+    <div id="namemodal" class="modal">
+        <div class="modal-dialog" >
+           <div class="modal-content" >
+               <div class="modal-header" >
+                   <h4>Edit your user name and bio</h4>
+               </div>
+               <div class="modal-body" >
+               
+                <form action="/editname" method="POST">
+                <input type="text" name="username" id="" class="form-control" placeholder="edit username" ><br><br>
+                     
+                <input type="submit" name="" id="" value="done" class="btn btn-outline-info" >
+                </form>    
+               
+                              <br><br>
+               <form action="/editbio" method="POST">
+                <textarea name="bio" id="" cols="40" rows="3" placeholder="add bio" class="form-control" ></textarea> <br>
+                     <input type="submit" name="" id="" value="done"  class="btn btn-outline-info">
+                </form>
+            
+                </div>
+               <div class="modal-footer" >
+                   rada?
+               </div>
+           </div>
+         <!-- above div closes the content -->
+          </div>
+      
+        
+        
+    </div>
+    
+    <!-- End for modal -->
+    
+
+    
+    <div id="addcontentmodal" class="modal">
+        <div class="modal-dialog" >
+           <div class="modal-content" >
+               <div class="modal-header" >
+                   <p class="text-muted" >Choose category here :</p>
+               </div>
+               <div class="modal-body" >
+                <ul>
+                    <!-- <li>  <a style="text-decoration: none;" href="/addchallenge">challenge</a></li> -->
+                    <li> <a style="text-decoration: none;" href="/addfunny">funny</a> </li>
+                    <li> <a style="text-decoration: none;" href="/addrespect">respect</a> </li>
+                    <li>  <a style="text-decoration: none;" href="/addmemes">memes</a></li>
+                    <li> <a style="text-decoration: none;" href="/addher">made her day</a> </li>
+                    <li> <a style="text-decoration: none;" href="/addmusic">music & dance</a> </li>
+                    <li> <a style="text-decoration: none;" href="/addcars">car lovers</a> </li>
+                
+                
+                </ul>
+                      
+               <div class="modal-footer" >
+                   rada?
+               </div>
+           </div>
+         <!-- above div closes the content -->
+          </div>
+      
+        
+        
+    </div>
+    
+    <!-- End for modal -->
+    
+    
+</body>
+
+</html>

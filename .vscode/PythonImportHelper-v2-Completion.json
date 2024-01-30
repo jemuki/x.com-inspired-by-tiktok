@@ -1,0 +1,1204 @@
+[
+    {
+        "label": "count",
+        "importPath": "itertools",
+        "description": "itertools",
+        "isExtraImport": true,
+        "detail": "itertools",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "secure_filename",
+        "importPath": "werkzeug.utils",
+        "description": "werkzeug.utils",
+        "isExtraImport": true,
+        "detail": "werkzeug.utils",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "urllib.request",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "urllib.request",
+        "description": "urllib.request",
+        "detail": "urllib.request",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "pymysql",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pymysql",
+        "description": "pymysql",
+        "detail": "pymysql",
+        "documentation": {}
+    },
+    {
+        "label": "allowed_file",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def allowed_file(filename):\n return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS\n@app.route('/')\ndef index():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from clip1   \"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    row = cursor.fetchone()\n    return render_template('index.html', data = row)",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "index",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def index():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from clip1   \"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    row = cursor.fetchone()\n    return render_template('index.html', data = row)\n@app.route('/signup', methods = ['POST', 'GET'])\ndef signup():\n    if request.method == 'POST':",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "signup",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def signup():\n    if request.method == 'POST':\n        username = request.form['username']\n        email = request.form['email']\n        password1 = request.form['password1']\n        password2 = request.form['password2']\n        if len(password1) < 8 :\n            return render_template('signup.html', message = \"Password must be atleast 8 characters\")\n        elif password1 != password2 :\n            return render_template('signup.html', message = \"Your password did not match\")",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def login():\n    if request.method == 'POST':\n        email = request.form['email']\n        password = request.form['password']\n        connection = pymysql.connect(host='localhost', user='root', password='', database='jemuki.com')\n        cursor = connection.cursor()\n        cursor.execute('select * from signup where email = %s and password =%s', (email, password))\n        if cursor.rowcount == 0 :\n            return render_template('login.html', message = \"Wrong details, please try again.\")\n        elif cursor.rowcount == 1 :",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "signout",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def signout():\n    session.pop('key', None)\n    return redirect('/')   # take user to home route after logout\n@app.route('/home')\ndef homepage():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from memeclip   \"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    row = cursor.fetchone()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "homepage",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def homepage():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from memeclip   \"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    row = cursor.fetchone()\n    sql = \"select * from icons   \"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    rows = cursor.fetchall()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "j",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def j():\n    return render_template('j.html')\n@app.route('/profile')\ndef profile():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from signup  where email = %s  \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (session['key']))\n    if cursor.rowcount == 0 :\n        return render_template('profile.html', message = \"No user uploaded yet\")",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "profile",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def profile():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from signup  where email = %s  \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (session['key']))\n    if cursor.rowcount == 0 :\n        return render_template('profile.html', message = \"No user uploaded yet\")\n    else:\n        row = cursor.fetchone()\n        return render_template('profile.html', data = row)",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "myfollowers",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def myfollowers():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from following   where following = %s  \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (session['key']))\n    if cursor.rowcount == 0 :\n        return render_template('funnyfollowers.html', message = \"No  followers yet\")\n    else:\n        rows = cursor.fetchall()\n        return render_template('funnyfollowers.html', data = rows )",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "challengeuploads",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def challengeuploads():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from challenge   where email = %s  \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (session['key']))\n    if cursor.rowcount == 0 :\n        return render_template('addchallenge.html', message = \"No  uploads yet\")\n    else:\n        rows = cursor.fetchall()\n        return render_template('addchallenge.html', data = rows )",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "funnyuploads",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def funnyuploads():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from funny  where email = %s order by funny_id DESC \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (session['key']))\n    if cursor.rowcount == 0 :\n        return render_template('addfunny.html', message = \"No  uploads yet\")\n    else:\n        rows = cursor.fetchall()\n        return render_template('addfunny.html', data = rows )",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "respectuploads",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def respectuploads():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from respect  where email = %s order by respect_id DESC \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (session['key']))\n    if cursor.rowcount == 0 :\n        return render_template('addrespect.html', message = \"No  uploads yet\")\n    else:\n        rows = cursor.fetchall()\n        return render_template('addrespect.html', data = rows )",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "memesuploads",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def memesuploads():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from memes  where email = %s order by meme_id DESC \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (session['key']))\n    if cursor.rowcount == 0 :\n        return render_template('addmemes.html', message = \"No  uploads yet\")\n    else:\n        rows = cursor.fetchall()\n        return render_template('addmemes.html', data = rows )",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "heruploads",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def heruploads():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from her  where email = %s order by her_id DESC \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (session['key']))\n    if cursor.rowcount == 0 :\n        return render_template('addher.html', message = \"No  uploads yet\")\n    else:\n        rows = cursor.fetchall()\n        return render_template('addher.html', data = rows )",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "musicuploads",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def musicuploads():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from music  where email = %s order by music_id DESC \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (session['key']))\n    if cursor.rowcount == 0 :\n        return render_template('addmusic.html', message = \"No  uploads yet\")\n    else:\n        rows = cursor.fetchall()\n        return render_template('addmusic.html', data = rows )",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "caruploads",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def caruploads():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from cars  where email = %s order by car_id DESC \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (session['key']))\n    if cursor.rowcount == 0 :\n        return render_template('addcars.html', message = \"No  uploads yet\")\n    else:\n        rows = cursor.fetchall()\n        return render_template('addcars.html', data = rows )",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "editname",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def editname():\n    if request.method == 'POST':\n        username = request.form['username']\n        connection = pymysql.connect(host='localhost', user='root', password='', database='jemuki.com')\n        sql = 'UPDATE signup SET  username=%s WHERE email=%s '\n        cursor = connection.cursor()\n        cursor.execute(sql, (username, session['key'] ))\n        connection.commit()\n        sql = 'UPDATE posts SET  username=%s WHERE email=%s '\n        cursor = connection.cursor()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "editbio",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def editbio():\n    if request.method == 'POST':\n        bio = request.form['bio']\n        connection = pymysql.connect(host='localhost', user='root', password='', database='jemuki.com')\n        sql = 'UPDATE signup SET  bio=%s WHERE email=%s '\n        cursor = connection.cursor()\n        cursor.execute(sql, (bio, session['key'] ))\n        connection.commit()\n        # row = cursor.fetchone()\n        # bio = row[3]",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "editdp",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def editdp():\n    connection = pymysql.connect(host = 'localhost', user = 'root', password = '', database = 'jemuki.com')\n    cursor = connection.cursor()\n    now = datetime.now()\n    if request.method == 'POST':\n        files = request.files.getlist('files[]')\n        #print(files)\n        for file in files:\n            if file and allowed_file(file.filename):\n                filename = secure_filename(file.filename)",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "add",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def add():\n    return render_template('add.html')\n@app.route('/ideas')\ndef ideas():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from ideas order by rand() LIMIT 60  \"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    if cursor.rowcount == 0 :\n        return render_template('ideas.html', message = \"No ideas uploaded yet\")",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "ideas",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def ideas():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from ideas order by rand() LIMIT 60  \"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    if cursor.rowcount == 0 :\n        return render_template('ideas.html', message = \"No ideas uploaded yet\")\n    else:\n        rows = cursor.fetchall()\n        return render_template('ideas.html', data = rows )",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "readidea",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def readidea(idea_id):\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from ideas where idea_id=%s order by uploaded_on DESC  \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (idea_id))\n    if cursor.rowcount == 0 :\n        return render_template('readidea.html', message = \"No ideas uploaded yet\")\n    else:\n        row = cursor.fetchone()\n        return render_template('readidea.html', data = row )",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "memeimages",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def memeimages():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from memeimages order by rand() LIMIT 10  \"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    if cursor.rowcount == 0 :\n        return render_template('memeimages.html', message = \"No images uploaded yet\")\n    else:\n        rows = cursor.fetchall()\n        return render_template('memeimages.html', data = rows )",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "addmemeimg",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def addmemeimg():\n    connection = pymysql.connect(host = 'localhost', user = 'root', password = '', database = 'jemuki.com')\n    cursor = connection.cursor()\n    now = datetime.now()\n    if request.method == 'POST':\n        files = request.files.getlist('files[]')\n        caption = request.form['caption']\n        #print(files)\n        for file in files:\n            if file and allowed_file(file.filename):",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "sparkclips",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def sparkclips():\n    return render_template('sparkclips.html')\n@app.route('/bgsounds')\ndef bgsounds():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from bgsounds order by rand() LIMIT 60  \"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    if cursor.rowcount == 0 :\n        return render_template('bgsound.html', message = \"No sounds uploaded yet\")",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "bgsounds",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def bgsounds():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from bgsounds order by rand() LIMIT 60  \"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    if cursor.rowcount == 0 :\n        return render_template('bgsound.html', message = \"No sounds uploaded yet\")\n    else:\n        rows = cursor.fetchall()\n        return render_template('bgsound.html', data = rows )",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "searchsound",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def searchsound():\n    if request.method == 'POST':\n        search = request.form['search']\n        connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n        sql = \"select  * from bgsounds where caption like '%{}%' order by rand() LIMIT 50  \".format(search)\n        cursor = connection.cursor()\n        cursor.execute(sql)\n        if cursor.rowcount == 0 :\n            return render_template('bgsound.html', message = \"No matching results\")\n        else:",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "addbgsounds",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def addbgsounds():\n    connection = pymysql.connect(host = 'localhost', user = 'root', password = '', database = 'jemuki.com')\n    cursor = connection.cursor()\n    now = datetime.now()\n    if request.method == 'POST':\n        files = request.files.getlist('files[]')\n        caption = request.form['caption']\n        #print(files)\n        for file in files:\n            if file and allowed_file(file.filename):",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "challenge",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def challenge():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from challenge  \"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    if cursor.rowcount == 0 :\n        return render_template('challenge.html', message = \"No challenges uploaded yet\")\n    else:\n        rows = cursor.fetchall()\n        return render_template('challenge.html', data = rows )",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "chatalentreplies",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def chatalentreplies():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from challenge  \"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    rows = cursor.fetchall()\n    return render_template('challenge.html', data = rows )\n@app.route('/chalegends')\ndef chalegends():\n    return render_template('chalegends.html')",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "chalegends",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def chalegends():\n    return render_template('chalegends.html')\n@app.route('/chalegendreplies')\ndef chalegendreplies():\n    return render_template('chalegendreplies.html')\n@app.route('/chainsane')\ndef chainsane():\n    return render_template('chainsane.html')\n@app.route('/chainsanereplies')\ndef chainsanereplies():",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "chalegendreplies",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def chalegendreplies():\n    return render_template('chalegendreplies.html')\n@app.route('/chainsane')\ndef chainsane():\n    return render_template('chainsane.html')\n@app.route('/chainsanereplies')\ndef chainsanereplies():\n    return render_template('chainsanereplies.html')\n@app.route('/chagods')\ndef chagods():",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "chainsane",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def chainsane():\n    return render_template('chainsane.html')\n@app.route('/chainsanereplies')\ndef chainsanereplies():\n    return render_template('chainsanereplies.html')\n@app.route('/chagods')\ndef chagods():\n    return render_template('chagods.html')\n@app.route('/chagodsreplies')\ndef chagodsreplies():",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "chainsanereplies",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def chainsanereplies():\n    return render_template('chainsanereplies.html')\n@app.route('/chagods')\ndef chagods():\n    return render_template('chagods.html')\n@app.route('/chagodsreplies')\ndef chagodsreplies():\n    return render_template('chagodsreplies.html')\n@app.route('/funny')\ndef funny():",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "chagods",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def chagods():\n    return render_template('chagods.html')\n@app.route('/chagodsreplies')\ndef chagodsreplies():\n    return render_template('chagodsreplies.html')\n@app.route('/funny')\ndef funny():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from funny where category = '' ORDER by rand()  LIMIT 10\"\n    cursor = connection.cursor()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "chagodsreplies",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def chagodsreplies():\n    return render_template('chagodsreplies.html')\n@app.route('/funny')\ndef funny():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from funny where category = '' ORDER by rand()  LIMIT 10\"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    rows = cursor.fetchall()\n    sql2 = \"select * from funactive \"",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "funny",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def funny():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from funny where category = '' ORDER by rand()  LIMIT 10\"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    rows = cursor.fetchall()\n    sql2 = \"select * from funactive \"\n    cursor2 = connection.cursor()\n    cursor2.execute(sql2)\n    row = cursor2.fetchone()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "funlegends",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def funlegends():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from funny where category = 'legends' ORDER by rand() LIMIT 10 \"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    rows = cursor.fetchall()\n    sql2 = \"select * from funactive \"\n    cursor2 = connection.cursor()\n    cursor2.execute(sql2)\n    row = cursor2.fetchone()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "funinsane",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def funinsane():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from funny where category = 'insane' ORDER by rand() LIMIT 10 \"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    rows = cursor.fetchall()\n    sql2 = \"select * from funactive \"\n    cursor2 = connection.cursor()\n    cursor2.execute(sql2)\n    row = cursor2.fetchone()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "fungods",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def fungods():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from funny where category = 'gods' ORDER by rand() LIMIT 10 \"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    rows = cursor.fetchall()\n    sql2 = \"select * from funactive \"\n    cursor2 = connection.cursor()\n    cursor2.execute(sql2)\n    row = cursor2.fetchone()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "respect",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def respect():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from respect where category = '' ORDER by rand()  LIMIT 10\"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    rows = cursor.fetchall()\n    sql2 = \"select * from resactive \"\n    cursor2 = connection.cursor()\n    cursor2.execute(sql2)\n    row = cursor2.fetchone()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "reslegends",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def reslegends():\n   connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n   sql = \"select * from respect where category = 'legends' ORDER by rand() LIMIT 10 \"\n   cursor = connection.cursor()\n   cursor.execute(sql)\n   rows = cursor.fetchall()\n   sql2 = \"select * from resactive \"\n   cursor2 = connection.cursor()\n   cursor2.execute(sql2)\n   row = cursor2.fetchone()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "resinsane",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def resinsane():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from respect where category = 'insane' ORDER by rand() LIMIT 10 \"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    rows = cursor.fetchall()\n    sql2 = \"select * from resactive \"\n    cursor2 = connection.cursor()\n    cursor2.execute(sql2)\n    row = cursor2.fetchone()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "resgods",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def resgods():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from respect where category = 'gods' ORDER by rand() LIMIT 10 \"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    rows = cursor.fetchall()\n    sql2 = \"select * from resactive \"\n    cursor2 = connection.cursor()\n    cursor2.execute(sql2)\n    row = cursor2.fetchone()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "memes",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def memes():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from memes where category = '' ORDER by rand()  LIMIT 10\"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    rows = cursor.fetchall()\n    sql2 = \"select * from memeactive \"\n    cursor2 = connection.cursor()\n    cursor2.execute(sql2)\n    row = cursor2.fetchone()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "memeslegends",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def memeslegends():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from memes where category = 'legends' ORDER by rand() LIMIT 10 \"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    rows = cursor.fetchall()\n    sql2 = \"select * from memeactive \"\n    cursor2 = connection.cursor()\n    cursor2.execute(sql2)\n    row = cursor2.fetchone()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "memesinsane",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def memesinsane():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from memes where category = 'insane' ORDER by rand() LIMIT 10 \"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    rows = cursor.fetchall()\n    sql2 = \"select * from memeactive \"\n    cursor2 = connection.cursor()\n    cursor2.execute(sql2)\n    row = cursor2.fetchone()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "memesgods",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def memesgods():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from memes where category = 'gods' ORDER by rand() LIMIT 10 \"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    rows = cursor.fetchall()\n    sql2 = \"select * from memeactive \"\n    cursor2 = connection.cursor()\n    cursor2.execute(sql2)\n    row = cursor2.fetchone()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "her",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def her():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from her where category = '' ORDER by rand()  LIMIT 10\"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    rows = cursor.fetchall()\n    sql2 = \"select * from heractive \"\n    cursor2 = connection.cursor()\n    cursor2.execute(sql2)\n    row = cursor2.fetchone()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "herlegends",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def herlegends():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from her where category = 'legends' ORDER by rand() LIMIT 10 \"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    rows = cursor.fetchall()\n    sql2 = \"select * from heractive \"\n    cursor2 = connection.cursor()\n    cursor2.execute(sql2)\n    row = cursor2.fetchone()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "herinsane",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def herinsane():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from her where category = 'insane' ORDER by rand() LIMIT 10 \"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    rows = cursor.fetchall()\n    sql2 = \"select * from heractive \"\n    cursor2 = connection.cursor()\n    cursor2.execute(sql2)\n    row = cursor2.fetchone()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "hergods",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def hergods():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from her where category = 'gods' ORDER by rand() LIMIT 10 \"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    rows = cursor.fetchall()\n    sql2 = \"select * from heractive \"\n    cursor2 = connection.cursor()\n    cursor2.execute(sql2)\n    row = cursor2.fetchone()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "music",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def music():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from music where category = '' ORDER by rand()  LIMIT 10\"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    rows = cursor.fetchall()\n    sql2 = \"select * from musicactive \"\n    cursor2 = connection.cursor()\n    cursor2.execute(sql2)\n    row = cursor2.fetchone()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "musiclegends",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def musiclegends():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from music where category = 'legends' ORDER by rand() LIMIT 10 \"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    rows = cursor.fetchall()\n    sql2 = \"select * from musicactive \"\n    cursor2 = connection.cursor()\n    cursor2.execute(sql2)\n    row = cursor2.fetchone()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "musicinsane",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def musicinsane():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from music where category = 'insane' ORDER by rand() LIMIT 10 \"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    rows = cursor.fetchall()\n    sql2 = \"select * from musicactive \"\n    cursor2 = connection.cursor()\n    cursor2.execute(sql2)\n    row = cursor2.fetchone()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "musicgods",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def musicgods():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from music where category = 'gods' ORDER by rand() LIMIT 10 \"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    rows = cursor.fetchall()\n    sql2 = \"select * from musicactive \"\n    cursor2 = connection.cursor()\n    cursor2.execute(sql2)\n    row = cursor2.fetchone()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "cars",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def cars():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from cars where category = '' ORDER by rand()  LIMIT 10\"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    rows = cursor.fetchall()\n    sql2 = \"select * from caractive \"\n    cursor2 = connection.cursor()\n    cursor2.execute(sql2)\n    row = cursor2.fetchone()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "carlegends",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def carlegends():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from cars where category = 'legends' ORDER by rand() LIMIT 10 \"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    rows = cursor.fetchall()\n    sql2 = \"select * from caractive \"\n    cursor2 = connection.cursor()\n    cursor2.execute(sql2)\n    row = cursor2.fetchone()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "carinsane",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def carinsane():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from cars where category = 'insane' ORDER by rand() LIMIT 10 \"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    rows = cursor.fetchall()\n    sql2 = \"select * from caractive \"\n    cursor2 = connection.cursor()\n    cursor2.execute(sql2)\n    row = cursor2.fetchone()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "cargods",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def cargods():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from cars where category = 'gods' ORDER by rand() LIMIT 10 \"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    rows = cursor.fetchall()\n    sql2 = \"select * from caractive \"\n    cursor2 = connection.cursor()\n    cursor2.execute(sql2)\n    row = cursor2.fetchone()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "replies",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def replies():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from posts \"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    if cursor.rowcount == 0 :\n        return render_template('replies.html', message = \"No posts uploaded yet\")\n    else:\n        rows = cursor.fetchall()\n        return render_template('replies.html', data = rows )",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "repliesx",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def repliesx(post_id):\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from posts where post_id = %s \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (post_id))  # replace place holder %s with reg_no\n    # get the row holding the car details\n    row = cursor.fetchone()\n    # we return the data holding one row\n    return render_template('repliesx.html', data = row)\n@app.route('/addrepliesx/<post_id>', methods = ['POST', 'GET'])",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "addrepliesx",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def addrepliesx(post_id):\n    if request.method == 'POST':\n        reply = request.form['reply']\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"insert into repliesx(email,\treply,\tpost_id,\tusername,\tdp,\tuploaded_on) VALUES(%s, %s, %s, %s, %s, %s)\"\n    cursor = connection.cursor()\n    now = datetime.now()\n    cursor.execute(sql, (session['key'], reply, post_id, session['key1'], session['key3'], now ))  # replace place holder %s with reg_no\n    connection.commit()\n    return render_template('repliesx.html')",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "showrepliesx",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def showrepliesx(post_id):\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from repliesx where post_id = %s \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (post_id))  \n    rows = cursor.fetchall()\n    return render_template('repliesx.html', data = rows)\n@app.route('/replylegends')\ndef replylegends():\n    return render_template('replylegends.html')",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "replylegends",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def replylegends():\n    return render_template('replylegends.html')\n@app.route('/legendx')\ndef legendx():\n    return render_template('legendx.html')\n@app.route('/replyinsane')\ndef replyinsane():\n    return render_template('replyinsane.html')\n@app.route('/insanex')\ndef insanex():",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "legendx",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def legendx():\n    return render_template('legendx.html')\n@app.route('/replyinsane')\ndef replyinsane():\n    return render_template('replyinsane.html')\n@app.route('/insanex')\ndef insanex():\n    return render_template('insanex.html')\n@app.route('/replygods')\ndef replygods():",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "replyinsane",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def replyinsane():\n    return render_template('replyinsane.html')\n@app.route('/insanex')\ndef insanex():\n    return render_template('insanex.html')\n@app.route('/replygods')\ndef replygods():\n    return render_template('replygods.html')\n@app.route('/godsx')\ndef godsx():",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "insanex",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def insanex():\n    return render_template('insanex.html')\n@app.route('/replygods')\ndef replygods():\n    return render_template('replygods.html')\n@app.route('/godsx')\ndef godsx():\n    return render_template('godsx.html')\n@app.route('/addchallenge', methods=['POST', 'GET'])\ndef addchallenge():",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "replygods",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def replygods():\n    return render_template('replygods.html')\n@app.route('/godsx')\ndef godsx():\n    return render_template('godsx.html')\n@app.route('/addchallenge', methods=['POST', 'GET'])\ndef addchallenge():\n    connection = pymysql.connect(host = 'localhost', user = 'root', password = '', database = 'jemuki.com')\n    cursor = connection.cursor()\n    now = datetime.now()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "godsx",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def godsx():\n    return render_template('godsx.html')\n@app.route('/addchallenge', methods=['POST', 'GET'])\ndef addchallenge():\n    connection = pymysql.connect(host = 'localhost', user = 'root', password = '', database = 'jemuki.com')\n    cursor = connection.cursor()\n    now = datetime.now()\n    if request.method == 'POST':\n        files = request.files.getlist('files[]')\n        caption = request.form['caption']",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "addchallenge",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def addchallenge():\n    connection = pymysql.connect(host = 'localhost', user = 'root', password = '', database = 'jemuki.com')\n    cursor = connection.cursor()\n    now = datetime.now()\n    if request.method == 'POST':\n        files = request.files.getlist('files[]')\n        caption = request.form['caption']\n        #print(files)\n        for file in files:\n            if file and allowed_file(file.filename):",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "addfunny",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def addfunny():\n    connection = pymysql.connect(host = 'localhost', password = '', user = 'root', database = 'jemuki.com')\n    cursor = connection.cursor()\n    now = datetime.now()\n    if request.method == 'POST':\n        files = request.files.getlist('files[]')\n        caption = request.form['caption']\n        #print(files)\n        for file in files:\n            if file and allowed_file(file.filename):",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "flashfunny",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def flashfunny(funny_id):\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"SELECT * FROM flashfunny where email = %s and funny_id = %s \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (session['key'], funny_id))\n    if cursor.rowcount == 0 :\n        sql = \"Insert into flashfunny(email, funny_id) VALUES(%s, %s) \"\n        cursor = connection.cursor()\n        cursor.execute(sql, (session['key'], funny_id))  \n        connection.commit()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "funnycomments",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def funnycomments(funny_id):\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from funnycomments where funny_id = %s \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (funny_id))  \n    if cursor.rowcount == 0 :\n        return render_template('funnycomments.html', message = \"No comments uploaded yet\")\n    elif cursor.rowcount > 0 :\n        rows = cursor.fetchall()\n        return render_template('funnycomments.html', data = rows)",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "funnytapac",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def funnytapac(email):\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from signup where email = %s \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (email))\n    rows = cursor.fetchall()\n    for row in rows :\n        sql = \"select * from funny where email = %s order by flash DESC \"\n        cursor.execute(sql, row[1])\n        row = cursor.fetchall()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "followfunnytapac",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def followfunnytapac(email):\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select  * from following where email = %s and following = %s \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (session['key'], email))  \n    if cursor.rowcount == 0 :\n        sql = \"Insert into following(email, following, username, dp) VALUES(%s, %s, %s, %s) \"\n        cursor = connection.cursor()\n        cursor.execute(sql, (session['key'], email, session['key1'], session['key3']))  \n        connection.commit()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "followingfunnytapac",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def followingfunnytapac(email):\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select  * from following where email = %s \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (email)) \n    rows = cursor.fetchall()\n    return render_template('funnyfollowing.html', data = rows)\n@app.route('/addrespect', methods=['POST', 'GET'])",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "addrespect",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def addrespect():\n    connection = pymysql.connect(host = 'localhost', user = 'root', password = '', database = 'jemuki.com'  )\n    cursor = connection.cursor()\n    now = datetime.now()\n    if request.method == 'POST':\n        files = request.files.getlist('files[]')\n        caption = request.form['caption']\n        #print(files)\n        for file in files:\n            if file and allowed_file(file.filename):",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "flashrespect",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def flashrespect(respect_id):\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"SELECT * FROM flashrespect where email = %s and respect_id = %s \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (session['key'], respect_id))\n    if cursor.rowcount == 0 :\n        sql = \"Insert into flashrespect(email, respect_id) VALUES(%s, %s) \"\n        cursor = connection.cursor()\n        cursor.execute(sql, (session['key'], respect_id))  \n        connection.commit()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "respectcomments",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def respectcomments(respect_id):\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from funnycomments where respect_id = %s \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (respect_id))  \n    if cursor.rowcount == 0 :\n        return render_template('funnycomments.html', message = \"No comments uploaded yet\")\n    elif cursor.rowcount > 0 :\n        rows = cursor.fetchall()\n        return render_template('funnycomments.html', data = rows)",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "respecttapac",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def respecttapac(email):\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from signup where email = %s \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (email))  \n    rows = cursor.fetchall()\n    for row in rows :\n        sql = \"select * from respect where email = %s order by flash DESC \"\n        cursor.execute(sql, row[1])\n        row = cursor.fetchall()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "followrespecttapac",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def followrespecttapac(email):\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select  * from following where email = %s and following = %s \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (session['key'], email))  \n    if cursor.rowcount == 0 :\n        sql = \"Insert into following(email, following, username, dp) VALUES(%s, %s, %s, %s) \"\n        cursor = connection.cursor()\n        cursor.execute(sql, (session['key'], email, session['key1'], session['key3']))  \n        connection.commit()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "followingrespecttapac",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def followingrespecttapac(email):\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select  * from following where email = %s \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (email)) \n    rows = cursor.fetchall()\n    return render_template('funnyfollowing.html', data = rows)\n@app.route('/addmemes', methods=['POST', 'GET'] )\ndef addmemes():\n    connection = pymysql.connect(host = 'localhost', user = 'root', password = '', database = 'jemuki.com')",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "addmemes",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def addmemes():\n    connection = pymysql.connect(host = 'localhost', user = 'root', password = '', database = 'jemuki.com')\n    cursor = connection.cursor()\n    now = datetime.now()\n    if request.method == 'POST':\n        files = request.files.getlist('files[]')\n        caption = request.form['caption']\n        #print(files)\n        for file in files:\n            if file and allowed_file(file.filename):",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "flashmeme",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def flashmeme(meme_id):\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"SELECT * FROM flashmemes where email = %s and meme_id = %s \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (session['key'], meme_id))\n    if cursor.rowcount == 0 :\n        sql = \"Insert into flashmemes(email, meme_id) VALUES(%s, %s) \"\n        cursor = connection.cursor()\n        cursor.execute(sql, (session['key'], meme_id))  \n        connection.commit()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "memecomments",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def memecomments(funny_id):\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from funnycomments where funny_id = %s \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (funny_id))  \n    if cursor.rowcount == 0 :\n        return render_template('funnycomments.html', message = \"No comments uploaded yet\")\n    elif cursor.rowcount > 0 :\n        rows = cursor.fetchall()\n        return render_template('funnycomments.html', data = rows)",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "memestapac",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def memestapac(email):\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from signup where email = %s \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (email))  \n    rows = cursor.fetchall()\n    for row in rows :\n        sql = \"select * from memes where email = %s order by flash DESC \"\n        cursor.execute(sql, row[1])\n        row = cursor.fetchall()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "followmemestapac",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def followmemestapac(email):\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select  * from following where email = %s and following = %s \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (session['key'], email))  \n    if cursor.rowcount == 0 :\n        sql = \"Insert into following(email, following, username, dp) VALUES(%s, %s, %s, %s) \"\n        cursor = connection.cursor()\n        cursor.execute(sql, (session['key'], email, session['key1'], session['key3']))  \n        connection.commit()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "followingmemestapac",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def followingmemestapac(email):\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select  * from following where email = %s \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (email)) \n    rows = cursor.fetchall()\n    return render_template('funnyfollowing.html', data = rows)\n@app.route('/addher', methods=['POST', 'GET'])",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "addher",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def addher():\n    connection = pymysql.connect(host = 'localhost', user = 'root', password = '', database = 'jemuki.com')\n    cursor = connection.cursor()\n    now = datetime.now()\n    if request.method == 'POST':\n        files = request.files.getlist('files[]')\n        caption = request.form['caption']\n        #print(files)\n        for file in files:\n            if file and allowed_file(file.filename):",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "flashher",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def flashher(her_id):\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"SELECT * FROM flashher where email = %s and her_id = %s \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (session['key'], her_id))\n    if cursor.rowcount == 0 :\n        sql = \"Insert into flashher(email, her_id) VALUES(%s, %s) \"\n        cursor = connection.cursor()\n        cursor.execute(sql, (session['key'], her_id))  \n        connection.commit()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "hercomments",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def hercomments(funny_id):\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from funnycomments where funny_id = %s \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (funny_id))  \n    if cursor.rowcount == 0 :\n        return render_template('funnycomments.html', message = \"No comments uploaded yet\")\n    elif cursor.rowcount > 0 :\n        rows = cursor.fetchall()\n        return render_template('funnycomments.html', data = rows)",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "hertapac",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def hertapac(email):\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from signup where email = %s \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (email))  \n    rows = cursor.fetchall()\n    for row in rows :\n        sql = \"select * from her where email = %s order by flash DESC \"\n        cursor.execute(sql, row[1])\n        row = cursor.fetchall()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "followhertapac",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def followhertapac(email):\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select  * from following where email = %s and following = %s \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (session['key'], email))  \n    if cursor.rowcount == 0 :\n        sql = \"Insert into following(email, following, username, dp) VALUES(%s, %s, %s, %s) \"\n        cursor = connection.cursor()\n        cursor.execute(sql, (session['key'], email, session['key1'], session['key3']))  \n        connection.commit()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "followinghertapac",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def followinghertapac(email):\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select  * from following where email = %s \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (email)) \n    rows = cursor.fetchall()\n    return render_template('funnyfollowing.html', data = rows)",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "addmusic",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def addmusic():\n    connection = pymysql.connect(host = 'localhost', user = 'root', password = '', database = 'jemuki.com')\n    cursor = connection.cursor()\n    now = datetime.now()\n    if request.method == 'POST':\n        files = request.files.getlist('files[]')\n        caption = request.form['caption']\n        #print(files)\n        for file in files:\n            if file and allowed_file(file.filename):",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "flashmusic",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def flashmusic(music_id):\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"SELECT * FROM flashmusic where email = %s and music_id = %s \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (session['key'], music_id))\n    if cursor.rowcount == 0 :\n        sql = \"Insert into flashmusic(email, music_id) VALUES(%s, %s) \"\n        cursor = connection.cursor()\n        cursor.execute(sql, (session['key'], music_id))  \n        connection.commit()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "musictapac",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def musictapac(email):\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from signup where email = %s \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (email))  \n    rows = cursor.fetchall()\n    for row in rows :\n        sql = \"select * from music where email = %s order by flash DESC \"\n        cursor.execute(sql, row[1])\n        row = cursor.fetchall()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "followmusictapac",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def followmusictapac(email):\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select  * from following where email = %s and following = %s \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (session['key'], email))  \n    if cursor.rowcount == 0 :\n        sql = \"Insert into following(email, following, username, dp) VALUES(%s, %s, %s, %s) \"\n        cursor = connection.cursor()\n        cursor.execute(sql, (session['key'], email, session['key1'], session['key3']))  \n        connection.commit()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "followingmusictapac",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def followingmusictapac(email):\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select  * from following where email = %s \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (email)) \n    rows = cursor.fetchall()\n    return render_template('funnyfollowing.html', data = rows)\n@app.route('/addcars', methods=['POST', 'GET'])\ndef addcars():\n    connection = pymysql.connect(host = 'localhost', user = 'root', password = '', database = 'jemuki.com')",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "addcars",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def addcars():\n    connection = pymysql.connect(host = 'localhost', user = 'root', password = '', database = 'jemuki.com')\n    cursor = connection.cursor()\n    now = datetime.now()\n    if request.method == 'POST':\n        files = request.files.getlist('files[]')\n        caption = request.form['caption']\n        #print(files)\n        for file in files:\n            if file and allowed_file(file.filename):",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "flashcars",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def flashcars(car_id):\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"SELECT * FROM flashcars where email = %s and car_id = %s \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (session['key'], car_id))\n    if cursor.rowcount == 0 :\n        sql = \"Insert into flashcars(email, car_id) VALUES(%s, %s) \"\n        cursor = connection.cursor()\n        cursor.execute(sql, (session['key'], car_id))  \n        connection.commit()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "carcomments",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def carcomments(funny_id):\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from funnycomments where funny_id = %s \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (funny_id))  \n    if cursor.rowcount == 0 :\n        return render_template('funnycomments.html', message = \"No comments uploaded yet\")\n    elif cursor.rowcount > 0 :\n        rows = cursor.fetchall()\n        return render_template('funnycomments.html', data = rows)",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "cartapac",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def cartapac(email):\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from signup where email = %s \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (email))\n    rows = cursor.fetchall()\n    for row in rows :\n        sql = \"select * from cars where email = %s order by flash DESC \"\n        cursor.execute(sql, row[1])\n        row = cursor.fetchall()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "followcarstapac",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def followcarstapac(email):\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select  * from following where email = %s and following = %s \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (session['key'], email))  \n    if cursor.rowcount == 0 :\n        sql = \"Insert into following(email, following, username, dp) VALUES(%s, %s, %s, %s) \"\n        cursor = connection.cursor()\n        cursor.execute(sql, (session['key'], email, session['key1'], session['key3']))  \n        connection.commit()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "addpost",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def addpost():\n    connection = pymysql.connect(host = 'localhost', user = 'root', password = '', database = 'jemuki.com')\n    cursor = connection.cursor()\n    now = datetime.now()\n    if request.method == 'POST':\n        post = request.form['post']\n        files = request.files.getlist('files[]')\n        #print(files)\n        for file in files:\n            if file and allowed_file(file.filename):",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "addidea",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def addidea():\n    if request.method == 'POST':\n        caption = request.form['caption']\n        idea = request.form['idea']\n        connection = pymysql.connect(host='localhost', user='root', password='', database='jemuki.com')\n        now = datetime.now()\n        sql = 'insert into ideas(email, caption, idea, username, dp, uploaded_on)  VALUES(%s, %s, %s, %s, %s, %s) '\n        cursor = connection.cursor()\n        cursor.execute(sql, (session['key'],caption, idea, session['key1'], session['key3'], now ))\n        connection.commit()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "searchidea",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def searchidea():\n    if request.method == 'POST':\n        search = request.form['search']\n        connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n        sql = \"select  * from ideas where caption like '%{}%' order by rand() LIMIT 50 \".format(search)\n        cursor = connection.cursor()\n        cursor.execute(sql)\n        if cursor.rowcount == 0 :\n            return render_template('ideas.html', message = \"No matching results\")\n        else:",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "about",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def about():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select  * from about \"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    row = cursor.fetchall()\n    return render_template('about us.html', data = row)\n@app.route('/settings', methods = ['POST', 'GET'])\ndef settings():\n    return render_template('settings.html')",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def settings():\n    return render_template('settings.html')\n@app.route('/feedback', methods = ['POST', 'GET'])\ndef feedback():\n    if request.method == 'POST':\n        feedback = request.form['feedback']    \n        connection = pymysql.connect(host ='localhost', user ='root', password ='', database ='jemuki.com')\n        cursor = connection.cursor()\n        try:\n            cursor.execute('insert into feedback(email, feedback) values(%s,%s)', ( session['key'], feedback))",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "feedback",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def feedback():\n    if request.method == 'POST':\n        feedback = request.form['feedback']    \n        connection = pymysql.connect(host ='localhost', user ='root', password ='', database ='jemuki.com')\n        cursor = connection.cursor()\n        try:\n            cursor.execute('insert into feedback(email, feedback) values(%s,%s)', ( session['key'], feedback))\n            connection.commit()\n            return redirect('/settings')\n        except:",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "changepassword",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def changepassword():\n    if request.method == 'POST':\n        oldpassword = request.form['oldpassword']\n        newpassword = request.form['newpassword']\n        connection = pymysql.connect(host='localhost', user='root', password='', database='jemuki.com')\n        cursor = connection.cursor()\n        cursor.execute('select * from signup where email = %s and password = %s', (session['key'], oldpassword))\n        if cursor.rowcount == 0 :\n            return render_template('settings.html', message = \"Wrong old password, please try again.\")\n        elif cursor.rowcount == 1 :",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "search",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def search():\n    if request.method == 'POST':\n        search = request.form['search']\n        connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n        sql = \"select  * from signup where username  like '%{}%' order by followers DESC \".format(search)\n        cursor = connection.cursor()\n        cursor.execute(sql) \n        rows1 = cursor.fetchall()\n        if cursor.rowcount == 0 :\n            sql = \"select  * from general where  clip_caption like '%{}%'\".format(search)",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "content",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def content(email):\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from signup where email = %s \"\n    cursor = connection.cursor()\n    cursor.execute(sql, (email))  \n    rows = cursor.fetchall()\n    for row in rows :\n        sql = \"select * from general where email = %s order by uploaded_on DESC \"\n        cursor.execute(sql, (row[1]) )\n        row = cursor.fetchall()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "funlegendstransition",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def funlegendstransition():\n    # To legends\n    connection = pymysql.connect(host='localhost', user='root', password='', database='jemuki.com')\n    cursor = connection.cursor()\n    sql = 'select * from funny  '\n    cursor.execute(sql)\n    if cursor.rowcount > 500 :\n        connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n        cursor = connection.cursor()\n        sql = \"select * from funny where category = '' order by flash DESC LIMIT 50\"",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "reslegendstransition",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def reslegendstransition():\n    # To legends\n    connection = pymysql.connect(host='localhost', user='root', password='', database='jemuki.com')\n    cursor = connection.cursor()\n    sql = 'select * from respect  '\n    cursor.execute(sql)\n    if cursor.rowcount > 500 :\n        connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n        cursor = connection.cursor()\n        sql = \"select * from respect where category = '' order by flash DESC LIMIT 50\"",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "memeslegendstransition",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def memeslegendstransition():\n    # To legends\n    connection = pymysql.connect(host='localhost', user='root', password='', database='jemuki.com')\n    cursor = connection.cursor()\n    sql = 'select * from memes  '\n    cursor.execute(sql)\n    if cursor.rowcount > 500 :\n        connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n        cursor = connection.cursor()\n        sql = \"select * from memes where category = '' order by flash DESC LIMIT 50\"",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "herlegendstransition",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def herlegendstransition():\n    # To legends\n    connection = pymysql.connect(host='localhost', user='root', password='', database='jemuki.com')\n    cursor = connection.cursor()\n    sql = 'select * from her  '\n    cursor.execute(sql)\n    if cursor.rowcount > 500 :\n        connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n        cursor = connection.cursor()\n        sql = \"select * from her where category = '' order by flash DESC LIMIT 50\"",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "musiclegendstransition",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def musiclegendstransition():\n    # To legends\n    connection = pymysql.connect(host='localhost', user='root', password='', database='jemuki.com')\n    cursor = connection.cursor()\n    sql = 'select * from music  '\n    cursor.execute(sql)\n    if cursor.rowcount > 500 :\n        connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n        cursor = connection.cursor()\n        sql = \"select * from music where category = '' order by flash DESC LIMIT 50\"",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "carlegendstransition",
+        "kind": 2,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "def carlegendstransition():\n    # To legends\n    connection = pymysql.connect(host='localhost', user='root', password='', database='jemuki.com')\n    cursor = connection.cursor()\n    sql = 'select * from cars  '\n    cursor.execute(sql)\n    if cursor.rowcount > 500:\n        connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n        cursor = connection.cursor()\n        sql = \"select * from cars where category = '' order by flash DESC LIMIT 50\"",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "app = Flask(__name__)\napp.secret_key = 'themostsecretivekeyeverinthemultiversecreatedbyjemuki'\n#app.secret_key = \"caircocoders-ednalan\"\nUPLOAD_FOLDER = 'static/uploads'\napp.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER\napp.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024\nALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif', 'jfif', 'mp4', 'mp3' ])\ndef allowed_file(filename):\n return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS\n@app.route('/')",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "app.secret_key",
+        "kind": 5,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "app.secret_key = 'themostsecretivekeyeverinthemultiversecreatedbyjemuki'\n#app.secret_key = \"caircocoders-ednalan\"\nUPLOAD_FOLDER = 'static/uploads'\napp.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER\napp.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024\nALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif', 'jfif', 'mp4', 'mp3' ])\ndef allowed_file(filename):\n return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS\n@app.route('/')\ndef index():",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "#app.secret_key",
+        "kind": 5,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "#app.secret_key = \"caircocoders-ednalan\"\nUPLOAD_FOLDER = 'static/uploads'\napp.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER\napp.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024\nALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif', 'jfif', 'mp4', 'mp3' ])\ndef allowed_file(filename):\n return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS\n@app.route('/')\ndef index():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "UPLOAD_FOLDER",
+        "kind": 5,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "UPLOAD_FOLDER = 'static/uploads'\napp.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER\napp.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024\nALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif', 'jfif', 'mp4', 'mp3' ])\ndef allowed_file(filename):\n return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS\n@app.route('/')\ndef index():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from clip1   \"",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "app.config['UPLOAD_FOLDER']",
+        "kind": 5,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER\napp.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024\nALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif', 'jfif', 'mp4', 'mp3' ])\ndef allowed_file(filename):\n return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS\n@app.route('/')\ndef index():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from clip1   \"\n    cursor = connection.cursor()",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "app.config['MAX_CONTENT_LENGTH']",
+        "kind": 5,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024\nALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif', 'jfif', 'mp4', 'mp3' ])\ndef allowed_file(filename):\n return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS\n@app.route('/')\ndef index():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from clip1   \"\n    cursor = connection.cursor()\n    cursor.execute(sql)",
+        "detail": "system",
+        "documentation": {}
+    },
+    {
+        "label": "ALLOWED_EXTENSIONS",
+        "kind": 5,
+        "importPath": "system",
+        "description": "system",
+        "peekOfCode": "ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif', 'jfif', 'mp4', 'mp3' ])\ndef allowed_file(filename):\n return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS\n@app.route('/')\ndef index():\n    connection = pymysql.connect(host='localhost',user='root', password='', database='jemuki.com')\n    sql = \"select * from clip1   \"\n    cursor = connection.cursor()\n    cursor.execute(sql)\n    row = cursor.fetchone()",
+        "detail": "system",
+        "documentation": {}
+    }
+]

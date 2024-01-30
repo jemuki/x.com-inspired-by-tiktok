@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>uploads</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <script src="../static/js/bootstrap.js"></script>
+    <style>
+.card-body {
+        display: flex;
+    }
+    
+    </style>
+</head>
+<body>
+    
+
+
+
+
+     
+<h3 class="text-muted ms-4" > uploads </h3>
+<h4 class="text-danger ms-4" >{{ message }}</h4>
+
+{% for row in data %}
+<div class="videos" >
+    <div class="card-shadow" >
+    <div class="card" >
+        <div class="card-body" >
+            <video controls width="330px" height="250px" >
+                <source src="../static/uploads/{{ row[2] }}" type="video/mp4">
+                </video>
+                
+        </div>
+        <p class="text-muted" >flash: {{ row[5] }} </p>
+        <p class="text-muted" >category: {{ row[6] }} </p>
+        <p class="text-muted" > {{ row[3] }} </p>
+                                        
+    </div>
+
+</div>
+</div>
+
+<br><br>
+{%  endfor %}
+
+
+   
+</body>
+</html>

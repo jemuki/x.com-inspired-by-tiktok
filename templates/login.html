@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+   
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+
+    <style>
+        input {
+            text-align: center;
+        }
+        form {
+            width: 50%;
+            margin-left: 10%;
+        }
+    </style>
+
+
+</head>
+<body>
+   <a href="/" class="btn btn-outline-dark ms-2 mt-2" >Back</a>
+    <br><br>
+    <b class="text-danger" > {{message}} </b>
+    <form action="/login" method="POST" autocomplete="off" >
+        <input type="email" name="email" id="" placeholder="email" required class="form-control" autocomplete="off" >
+        <br>
+        <input type="password" name="password" id="" placeholder="password" class="form-control" autocomplete="off" >
+        <br><br>
+        <input type="submit" name="" id="" value="Login" class="btn btn-outline-dark">
+
+    </form>
+<br>
+    <a href="/signup"  class="btn btn-outline-dark ms-5" >Create account</a>
+ 
+        
+
+</body>
+</html>

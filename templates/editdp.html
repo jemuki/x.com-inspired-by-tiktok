@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edit dp</title>
+<link rel="stylesheet" href="../static/css/bootstrap.css">
+<script src="../static/js/bootstrap.js"></script>
+
+<style>
+    /* body { */
+        /* background-image: url(../static/images/x1.jfif); */
+    
+    .form-control {
+        width: 60%;
+        margin-left: 20%;
+    }
+    .btn {
+        margin-left: 20%;
+    }
+    .dpview {
+        width: 450px;
+        height: 400px;
+        border-radius: 30px;
+        margin: auto;
+        background-color: whitesmoke;
+    }
+</style>
+
+</head>
+<body>
+    <a href="/profile" class="btn btn-outline-dark mt-2 ms-2" >back</a>
+    
+<br><br>
+
+
+<p>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-info">
+    <strong>{{ message }}</strong>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    </p>
+    
+
+
+<form method="post" action="/editdp" enctype="multipart/form-data" class="form-inline">
+    <div class="form-group">
+    <label style="margin-left: 20%;" ><p class="text-muted" >choose an image :</p> </label>
+    <input type="file" name="files[]" id="fileInput" class="form-control"  >
+    </div>
+    <br>
+    <input type="submit" name="submit" class="btn btn-success" value="UPLOAD"/>
+</form>
+
+<br>
+<h4 class="text-danger" > {{ message }} </h4>
+
+
+
+</body>
+</html>
